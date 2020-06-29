@@ -1,18 +1,18 @@
 const initialState = {
-  data: [],
-  get: {
+  text: '',
+  data: {
     success: false,
     loading: false,
     failed: false,
     error: '',
   },
-  add: {
+  login: {
     success: false,
     loading: false,
     failed: false,
     error: '',
   },
-  delete: {
+  signup: {
     success: false,
     loading: false,
     failed: false,
@@ -22,107 +22,96 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'GET_TODOS_SUCCESS':
+    case 'DATA_SUCCESS':
       return {
         ...state,
-        data: action.data,
-        get: {
+        text: action.text,
+        data: {
           success: true,
           loading: false,
           failed: false,
           error: '',
         },
       }
-    case 'GET_TODOS_LOADING':
+    case 'DATA_LOADING':
       return {
         ...state,
-        get: {
+        data: {
           success: false,
           loading: true,
           failed: false,
           error: '',
         },
       }
-    case 'GET_TODOS_FAILED':
+    case 'DATA_FAILED':
       return {
         ...state,
-        get: {
+        data: {
           success: false,
           loading: false,
           failed: true,
           error: action.error,
         },
       }
-
-    case 'ADD_TODO_SUCCESS':
+    case 'LOGIN_SUCCESS':
       return {
         ...state,
-        add: {
+        login: {
           success: true,
           loading: false,
           failed: false,
           error: '',
         },
       }
-    case 'ADD_TODO_LOADING':
+    case 'LOGIN_LOADING':
       return {
         ...state,
-        add: {
+        login: {
           success: false,
           loading: true,
           failed: false,
           error: '',
         },
       }
-    case 'ADD_TODO_FAILED':
+    case 'LOGIN_FAILED':
       return {
         ...state,
-        add: {
+        login: {
           success: false,
           loading: false,
           failed: true,
           error: action.error,
         },
       }
-    case 'ADD_TODO_RESET':
+    case 'SIGNUP_SUCCESS':
       return {
         ...state,
-        add: initialState.add,
-      }
-    case 'DELETE_TODO_SUCCESS':
-      return {
-        ...state,
-        delete: {
+        signup: {
           success: true,
           loading: false,
           failed: false,
           error: '',
         },
       }
-    case 'DELETE_TODO_LOADING':
+    case 'SIGNUP_LOADING':
       return {
         ...state,
-        delete: {
+        signup: {
           success: false,
           loading: true,
           failed: false,
           error: '',
         },
       }
-    case 'DELETE_TODO_FAILED':
+    case 'SIGNUP_FAILED':
       return {
         ...state,
-        delete: {
+        signup: {
           success: false,
           loading: false,
           failed: true,
           error: action.error,
         },
-      }
-    case 'DELETE_TODO_RESET':
-      return {
-        ...state,
-        delete: initialState.add,
       }
     default:
       return state

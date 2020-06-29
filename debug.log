@@ -1,2 +1,4 @@
 [0619/111137.837:ERROR:file_io.cc(89)] ReadExactly: expected 12768, observed 0
 [0619/111137.839:ERROR:crash_report_database_win.cc(445)] failed to read records
+[0619/113858.231:ERROR:file_io.cc(89)] ReadExactly: expected 12768, observed 0
+[0619/113858.232:ERROR:crash_report_database_win.cc(445)] failed to read records
