@@ -1,0 +1,11 @@
+@import '../../styles/vars.scss';
+
+.homePage {
+    color: $txt-color3;
+    font-size: 40px;
+    margin-bottom: 30px;
+
+    &:hover {
+        color: $txt-color3;
+    }
+}

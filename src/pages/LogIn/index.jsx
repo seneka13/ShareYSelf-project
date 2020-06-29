@@ -1,28 +1,46 @@
 import React from 'react'
 import { Container, Col } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom'
+import { string, number, func, oneOfType } from 'prop-types'
+import { connect } from 'react-redux'
+import Logo from '../../components/Logo'
 import PrimeInput from '../../components/PrimeInput'
 import PrimeBtn from '../../components/PrimeBtn'
+import HelpLink from '../../components/HelpLink'
+import { loginAction, changeField, clearFields, getData } from '../../store/actions'
 import styles from './login.module.scss'
 
-function LogIn() {
+function LogIn({
+  username,
+  password,
+  changeValue,
+  setBody,
+  getBody,
+  clear,
+}) {
   return (
     <div className={styles.loginPage}>
       <Container className="d-flex justify-content-center">
-        <Col xs={12} md={5}>
+        <Col xs={12} md={8} lg={5}>
           <form className={styles.loginForm}>
-            <NavLink className={styles.homePage} to="/" exact>ToMySelf</NavLink>
-            <PrimeInput id="userName" type="text" placeholder="Ваш логин" name="logIn" onChange={(value) => console.log(value)} />
-            <PrimeInput id="password" type="password" placeholder="Пароль" name="logIn" onChange={(value) => console.log(value)} />
+            <Logo />
+            <PrimeInput
+              id="userName"
+              type="text"
+              placeholder="Ваш логин"
+              name="logIn"
+              value={username}
+              onChange={(value) => changeValue('username', value)}
+            />
+            <PrimeInput
+              id="password"
+              type="password"
+              placeholder="Пароль"
+              name="logIn"
+              value={password}
+              onChange={(value) => changeValue('password', value)}
+            />
             <PrimeBtn text="Войти" />
-            <div className={styles.helpLink}>
-              <NavLink className={styles.loginRedir} to="/signup" exact>
-                Зарегестрироваться
-              </NavLink>
-              <NavLink className={styles.loginRedir} to="/" exact>
-                Забыли пароль?
-              </NavLink>
-            </div>
+            <HelpLink />
           </form>
         </Col>
       </Container>
@@ -30,4 +48,28 @@ function LogIn() {
   )
 }
 
-export default LogIn
+LogIn.propTypes = {
+  username: string.isRequired,
+  password: oneOfType([string.isRequired, number.isRequired]),
+  changeValue: func,
+  getBody: func,
+  setBody: func,
+  clear: func,
+}
+
+const mapStateToProps = (state) => ({
+  username: state.fields.signup.username,
+  password: state.fields.signup.password,
+  firstname: state.fields.signup.firstname,
+  lastname: state.fields.signup.lastname,
+  success: state.auth.signup.success,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  changeValue: (formField, value) => dispatch(changeField('signup', formField, value)),
+  clear: () => dispatch(clearFields()),
+  setBody: (body) => dispatch(loginAction(body)),
+  getBody: () => dispatch(getData()),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn)

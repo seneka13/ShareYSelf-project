@@ -1,4 +1,4 @@
-const endpoint = 'http://localhost:5432'
+const endpoint = 'http://localhost:1302'
 
 // функция проверят успешно ли отправился запрос
 const checkResponse = (response, errText) => {
@@ -42,9 +42,9 @@ export const loginAction = (body) => (dispatch) => {
     })
 }
 
-export const signinAction = (body) => (dispatch) => {
+export const signupAction = (body) => (dispatch) => {
   dispatch({ type: 'SIGNUP_LOADING' })
-  fetch(`${endpoint}/signin`, {
+  fetch(`${endpoint}/signup`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),

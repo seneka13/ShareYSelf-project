@@ -1,22 +1,69 @@
 import React from 'react'
 import { Container, Col } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { string, number, func, oneOfType } from 'prop-types'
 import PrimeInput from '../../components/PrimeInput'
+import { changeField, clearFields, signupAction } from '../../store/actions'
 import PrimeBtn from '../../components/PrimeBtn'
 import styles from './signup.module.scss'
 
-function SignUp() {
+function SignUp({
+  username,
+  password,
+  firstname,
+  lastname,
+  changeValue,
+  creAccount,
+  clear }) {
+  const handleClick = () => {
+    creAccount({ username, password, firstname, lastname })
+    clear()
+  }
   return (
     <div className={styles.signupPage}>
       <Container className="d-flex justify-content-center">
         <Col xs={12} md={8} lg={5}>
           <form className={styles.signupForm}>
-            <PrimeInput id="userName" type="text" placeholder="Ваш логин" name="signUp" onChange={(value) => console.log(value)} />
-            <PrimeInput id="firstName" type="text" placeholder="Имя" name="signUp" onChange={(value) => console.log(value)} />
-            <PrimeInput id="lastName" type="text" placeholder="Фамилия" name="signUp" onChange={(value) => console.log(value)} />
-            <PrimeInput id="password" type="password" placeholder="Пароль" name="signUp" onChange={(value) => console.log(value)} />
-            <PrimeBtn text="Зарегестрироваться" />
-            <p className={styles.signupText}>Нажимая кнопку «Зарегистрироваться», Вы принимаете условия
+            <PrimeInput
+              id="userName"
+              type="text"
+              value={username}
+              placeholder="Ваш логин"
+              name="signUp"
+              onChange={(value) => changeValue('username', value)}
+            />
+            <PrimeInput
+              id="firstName"
+              type="text"
+              value={firstname}
+              placeholder="Имя"
+              name="signUp"
+              onChange={(value) => changeValue('firstname', value)}
+            />
+            <PrimeInput
+              id="lastName"
+              type="text"
+              value={lastname}
+              placeholder="Фамилия"
+              name="signUp"
+              onChange={(value) => changeValue('lastname', value)}
+            />
+            <PrimeInput
+              id="password"
+              type="password"
+              value={password}
+              placeholder="Пароль"
+              name="signUp"
+              onChange={(value) => changeValue('password', value)}
+            />
+            <PrimeBtn
+              text="Зарегестрироваться"
+              onClick={handleClick}
+            />
+            <p className={styles.signupText}>
+              Нажимая кнопку «Зарегистрироваться»,
+              Вы принимаете условия
               Пользовательского соглашения.
             </p>
             <NavLink className={styles.signupRedir} to="/login" exact>
@@ -25,8 +72,32 @@ function SignUp() {
           </form>
         </Col>
       </Container>
+      {localStorage.getItem('token') && <Redirect to="/" />}
     </div>
   )
 }
 
-export default SignUp
+SignUp.propTypes = {
+  username: string.isRequired,
+  password: oneOfType([string.isRequired, number.isRequired]),
+  firstname: string,
+  lastname: string,
+  changeValue: func,
+  creAccount: func,
+  clear: func,
+}
+
+const mapStateToProps = (state) => ({
+  username: state.fields.signup.username,
+  password: state.fields.signup.password,
+  firstname: state.fields.signup.firstname,
+  lastname: state.fields.signup.lastname,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  changeValue: (formField, value) => dispatch(changeField('signup', formField, value)),
+  clear: () => dispatch(clearFields()),
+  creAccount: (body) => dispatch(signupAction(body)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
