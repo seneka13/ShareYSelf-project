@@ -9,7 +9,6 @@ function Nav() {
     { id: 2, to: '/articles', text: 'Статьи' },
     { id: 3, to: '/video', text: 'Видео' },
     { id: 4, to: '/image', text: 'Картинки' },
-    { id: 5, to: '/signup', text: 'Регистрация' },
   ]
 
   return (

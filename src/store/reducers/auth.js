@@ -1,5 +1,5 @@
 const initialState = {
-  text: '',
+  user: {},
   data: {
     success: false,
     loading: false,
@@ -25,7 +25,7 @@ const reducer = (state = initialState, action) => {
     case 'DATA_SUCCESS':
       return {
         ...state,
-        text: action.text,
+        user: action.data,
         data: {
           success: true,
           loading: false,

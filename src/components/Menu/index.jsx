@@ -1,16 +1,12 @@
 import React from 'react'
-import { node } from 'prop-types'
 import Burger from 'react-css-burger'
-import { NavLink } from 'react-router-dom'
 import Nav from '../Nav'
+import AuthNav from '../AuthNav'
 import styles from './menu.module.scss'
-import LoginIcon from '../Icons/LoginIcon'
 
 function Menu() {
   const [visible, setVisible] = React.useState(false)
-
   const isVisible = visible ? styles.navVisible : styles.nav
-
   const burgerRef = React.useRef(null)
 
   React.useEffect(() => {
@@ -30,7 +26,7 @@ function Menu() {
     <div ref={burgerRef}>
       <ul className={isVisible}>
         <Nav />
-        <li><NavLink to="/login" className={styles.login}><LoginIcon className={styles.icon} />Войти</NavLink></li>
+        <AuthNav />
       </ul>
       <div className={styles.burgerBtn}>
         <Burger
@@ -45,10 +41,6 @@ function Menu() {
       </div>
     </div>
   )
-}
-
-Menu.propTypes = {
-  children: node,
 }
 
 export default Menu

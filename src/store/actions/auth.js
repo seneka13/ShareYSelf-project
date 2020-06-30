@@ -1,4 +1,4 @@
-const endpoint = 'http://localhost:1302'
+const endpoint = 'http://localhost:8220'
 
 // функция проверят успешно ли отправился запрос
 const checkResponse = (response, errText) => {
@@ -17,8 +17,8 @@ export const getData = () => (dispatch) => {
     },
   })
     .then((response) => checkResponse(response, 'Ошибка загрузки'))
-    .then(({ text }) => {
-      dispatch({ type: 'DATA_SUCCESS', text })
+    .then(({ data }) => {
+      dispatch({ type: 'DATA_SUCCESS', data })
     })
     .catch((error) => {
       dispatch({ type: 'DATA_FAILED', error: errorHandler(error) })
@@ -49,7 +49,7 @@ export const signupAction = (body) => (dispatch) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
   })
-    .then((response) => checkResponse(response, 'Ошибка пароля/логина'))
+    .then((response) => checkResponse(response, 'Пожалуйста, заполните все поля*'))
     .then(({ user }) => {
       window.localStorage.setItem('token', user.token)
       dispatch({ type: 'SIGNUP_SUCCESS' })

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Col } from 'react-bootstrap'
 import { string, number, func, oneOfType } from 'prop-types'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Logo from '../../components/Logo'
 import PrimeInput from '../../components/PrimeInput'
@@ -16,11 +17,21 @@ function LogIn({
   setBody,
   getBody,
   clear,
+  err,
 }) {
+  React.useEffect(() => {
+    getBody()
+  }, [getBody])
+
+  const handleClick = () => {
+    setBody({ username, password })
+    clear()
+  }
+
   return (
     <div className={styles.loginPage}>
       <Container className="d-flex justify-content-center">
-        <Col xs={12} md={8} lg={5}>
+        <Col xs={12} md={8} lg={6}>
           <form className={styles.loginForm}>
             <Logo />
             <PrimeInput
@@ -39,11 +50,16 @@ function LogIn({
               value={password}
               onChange={(value) => changeValue('password', value)}
             />
-            <PrimeBtn text="Войти" />
+            <div className={styles.formErr}>{err}</div>
+            <PrimeBtn
+              text="Войти"
+              onClick={handleClick}
+            />
             <HelpLink />
           </form>
         </Col>
       </Container>
+      {localStorage.getItem('token') && <Redirect to="/" />}
     </div>
   )
 }
@@ -54,6 +70,7 @@ LogIn.propTypes = {
   changeValue: func,
   getBody: func,
   setBody: func,
+  err: string,
   clear: func,
 }
 
@@ -63,6 +80,7 @@ const mapStateToProps = (state) => ({
   firstname: state.fields.signup.firstname,
   lastname: state.fields.signup.lastname,
   success: state.auth.signup.success,
+  err: state.auth.login.error,
 })
 
 const mapDispatchToProps = (dispatch) => ({

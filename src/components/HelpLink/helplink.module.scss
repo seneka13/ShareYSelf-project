@@ -9,3 +9,12 @@
         margin-right: 15px;
     }
 }
+
+
+.loginRedir {
+    color: $txt-color3;
+
+    &:hover {
+        color: $line-color;
+    }
+}

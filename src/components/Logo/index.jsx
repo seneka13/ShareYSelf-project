@@ -4,7 +4,9 @@ import styles from './logo.module.scss'
 
 function Logo() {
   return (
-    <NavLink className={styles.homePage} to="/" exact>ToMySelf</NavLink>
+    <NavLink to="/" exact>
+      <h1 className={styles.homePage}>ToMySelf</h1>
+    </NavLink>
   )
 }
 

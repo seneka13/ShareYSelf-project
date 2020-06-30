@@ -1,0 +1,34 @@
+@import '../../styles/vars.scss';
+
+
+.login {
+    font-size: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    width: 20px;
+    margin-right: 5px;
+}
+
+.userName {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.logOut {
+    font-weight: lighter;
+}
+
+
+@media (max-width: 992px) {
+    .userName {
+        padding: 15px;
+    }
+    
+    .logOut {
+        padding: 15px;
+    }
+}

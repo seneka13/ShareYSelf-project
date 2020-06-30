@@ -4,6 +4,7 @@ import { NavLink, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { string, number, func, oneOfType } from 'prop-types'
 import PrimeInput from '../../components/PrimeInput'
+import Logo from '../../components/Logo'
 import { changeField, clearFields, signupAction } from '../../store/actions'
 import PrimeBtn from '../../components/PrimeBtn'
 import styles from './signup.module.scss'
@@ -15,7 +16,8 @@ function SignUp({
   lastname,
   changeValue,
   creAccount,
-  clear }) {
+  clear,
+  err }) {
   const handleClick = () => {
     creAccount({ username, password, firstname, lastname })
     clear()
@@ -23,8 +25,9 @@ function SignUp({
   return (
     <div className={styles.signupPage}>
       <Container className="d-flex justify-content-center">
-        <Col xs={12} md={8} lg={5}>
+        <Col xs={12} md={8} lg={6}>
           <form className={styles.signupForm}>
+            <Logo />
             <PrimeInput
               id="userName"
               type="text"
@@ -57,6 +60,7 @@ function SignUp({
               name="signUp"
               onChange={(value) => changeValue('password', value)}
             />
+            <div className={styles.formErr}>{err}</div>
             <PrimeBtn
               text="Зарегестрироваться"
               onClick={handleClick}
@@ -84,6 +88,7 @@ SignUp.propTypes = {
   lastname: string,
   changeValue: func,
   creAccount: func,
+  err: string,
   clear: func,
 }
 
@@ -92,6 +97,7 @@ const mapStateToProps = (state) => ({
   password: state.fields.signup.password,
   firstname: state.fields.signup.firstname,
   lastname: state.fields.signup.lastname,
+  err: state.auth.signup.error,
 })
 
 const mapDispatchToProps = (dispatch) => ({
