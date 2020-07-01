@@ -1,13 +1,13 @@
 import React from 'react'
 import { Container, Col } from 'react-bootstrap'
-import { string, number, func, oneOfType } from 'prop-types'
+import { string, number, func, object, oneOfType } from 'prop-types'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Logo from '../../components/Logo'
 import PrimeInput from '../../components/PrimeInput'
 import PrimeBtn from '../../components/PrimeBtn'
 import HelpLink from '../../components/HelpLink'
-import { loginAction, changeField, clearFields, getData } from '../../store/actions'
+import { loginAction, changeField, clearFields } from '../../store/actions'
 import styles from './login.module.scss'
 
 function LogIn({
@@ -15,14 +15,10 @@ function LogIn({
   password,
   changeValue,
   setBody,
-  getBody,
   clear,
   err,
+  user,
 }) {
-  React.useEffect(() => {
-    getBody()
-  }, [getBody])
-
   const handleClick = () => {
     setBody({ username, password })
     clear()
@@ -59,7 +55,7 @@ function LogIn({
           </form>
         </Col>
       </Container>
-      {localStorage.getItem('token') && <Redirect to="/" />}
+      {user && <Redirect to="/" />}
     </div>
   )
 }
@@ -68,7 +64,7 @@ LogIn.propTypes = {
   username: string.isRequired,
   password: oneOfType([string.isRequired, number.isRequired]),
   changeValue: func,
-  getBody: func,
+  user: object,
   setBody: func,
   err: string,
   clear: func,
@@ -81,13 +77,13 @@ const mapStateToProps = (state) => ({
   lastname: state.fields.signup.lastname,
   success: state.auth.signup.success,
   err: state.auth.login.error,
+  user: state.auth.user,
 })
 
 const mapDispatchToProps = (dispatch) => ({
   changeValue: (formField, value) => dispatch(changeField('signup', formField, value)),
   clear: () => dispatch(clearFields()),
   setBody: (body) => dispatch(loginAction(body)),
-  getBody: () => dispatch(getData()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LogIn)

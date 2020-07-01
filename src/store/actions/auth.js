@@ -35,7 +35,7 @@ export const loginAction = (body) => (dispatch) => {
     .then((response) => checkResponse(response, 'Ошибка пароля/логина'))
     .then(({ user }) => {
       window.localStorage.setItem('token', user.token)
-      dispatch({ type: 'LOGIN_SUCCESS' })
+      dispatch({ type: 'LOGIN_SUCCESS', user: user.data })
     })
     .catch((error) => {
       dispatch({ type: 'LOGIN_FAILED', error: errorHandler(error) })
@@ -52,9 +52,13 @@ export const signupAction = (body) => (dispatch) => {
     .then((response) => checkResponse(response, 'Пожалуйста, заполните все поля*'))
     .then(({ user }) => {
       window.localStorage.setItem('token', user.token)
-      dispatch({ type: 'SIGNUP_SUCCESS' })
+      dispatch({ type: 'SIGNUP_SUCCESS', user: user.data })
     })
     .catch((error) => {
       dispatch({ type: 'SIGNUP_FAILED', error: errorHandler(error) })
     })
 }
+
+export const userLogOut = () => ({
+  type: 'USER_LOGOUT',
+})

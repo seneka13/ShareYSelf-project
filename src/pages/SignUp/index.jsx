@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Col } from 'react-bootstrap'
 import { NavLink, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { string, number, func, oneOfType } from 'prop-types'
+import { string, number, func, object, oneOfType } from 'prop-types'
 import PrimeInput from '../../components/PrimeInput'
 import Logo from '../../components/Logo'
 import { changeField, clearFields, signupAction } from '../../store/actions'
@@ -17,7 +17,8 @@ function SignUp({
   changeValue,
   creAccount,
   clear,
-  err }) {
+  err,
+  user }) {
   const handleClick = () => {
     creAccount({ username, password, firstname, lastname })
     clear()
@@ -76,7 +77,7 @@ function SignUp({
           </form>
         </Col>
       </Container>
-      {localStorage.getItem('token') && <Redirect to="/" />}
+      {user && <Redirect to="/" />}
     </div>
   )
 }
@@ -90,6 +91,7 @@ SignUp.propTypes = {
   creAccount: func,
   err: string,
   clear: func,
+  user: object,
 }
 
 const mapStateToProps = (state) => ({
@@ -98,6 +100,7 @@ const mapStateToProps = (state) => ({
   firstname: state.fields.signup.firstname,
   lastname: state.fields.signup.lastname,
   err: state.auth.signup.error,
+  user: state.auth.user,
 })
 
 const mapDispatchToProps = (dispatch) => ({

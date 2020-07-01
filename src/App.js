@@ -1,11 +1,17 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { func } from 'prop-types'
+import { getData } from './store/actions'
 import HomePage from './pages/HomePage'
 import SignUp from './pages/SignUp'
 import LogIn from './pages/LogIn'
 
-function App() {
+function App({ getBody }) {
+  React.useEffect(() => {
+    getBody()
+  }, [getBody])
   return (
     <BrowserRouter>
       <Switch>
@@ -24,4 +30,12 @@ function App() {
   )
 }
 
-export default App
+App.propTypes = {
+  getBody: func,
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  getBody: () => dispatch(getData()),
+})
+
+export default connect(null, mapDispatchToProps)(App)

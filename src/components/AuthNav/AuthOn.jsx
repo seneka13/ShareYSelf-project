@@ -1,6 +1,8 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import ProfileIcon from '../Icons/ProfileIcon'
+import { userLogOut } from '../../store/actions'
 
 import styles from './auth.module.scss'
 
@@ -9,16 +11,25 @@ function AuthOn() {
     user: state.auth.user,
   }))
 
+  const dispatch = useDispatch()
+  const logOut = () => dispatch(userLogOut())
+
+  const handleLogOut = () => {
+    window.localStorage.removeItem('token')
+    logOut()
+  }
+
   return (
     <>
-      <li className={styles.userName}><ProfileIcon className={styles.icon} />{user.firstname} {user.lastname}</li>
+      <li className={styles.userName}><ProfileIcon className={styles.icon} />{user && user.firstname} {user && user.lastname}</li>
       <li>
         <button
-          onClick={() => { window.localStorage.removeItem('token') }}
+          onClick={handleLogOut}
           className={styles.logOut}
           type="submit"
         > Выйти
         </button>
+        {!user && <Redirect to="/" />}
       </li>
     </>
 

@@ -1,5 +1,5 @@
 const initialState = {
-  user: {},
+  user: null,
   data: {
     success: false,
     loading: false,
@@ -20,7 +20,7 @@ const initialState = {
   },
 }
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => { 
   switch (action.type) {
     case 'DATA_SUCCESS':
       return {
@@ -56,6 +56,7 @@ const reducer = (state = initialState, action) => {
     case 'LOGIN_SUCCESS':
       return {
         ...state,
+        user: action.user,
         login: {
           success: true,
           loading: false,
@@ -86,6 +87,7 @@ const reducer = (state = initialState, action) => {
     case 'SIGNUP_SUCCESS':
       return {
         ...state,
+        user: action.user,
         signup: {
           success: true,
           loading: false,
@@ -112,6 +114,11 @@ const reducer = (state = initialState, action) => {
           failed: true,
           error: action.error,
         },
+      }
+    case 'USER_LOGOUT':
+      return {
+        ...state,
+        user: null,
       }
     default:
       return state

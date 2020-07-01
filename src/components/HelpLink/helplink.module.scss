@@ -18,3 +18,9 @@
         color: $line-color;
     }
 }
+
+@media(max-width: 992px) {
+    .helpLink {
+        font-size: 14px;
+    }
+}
