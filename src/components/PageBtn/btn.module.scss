@@ -1,0 +1,15 @@
+@import '../../styles/vars.scss';
+
+
+.btn {
+    color: $txt-color3;
+    border-radius: 5px;
+    padding: 20px;
+    width: 300px;
+    font-size: 23px;
+    background: $light-color;
+
+    &:hover {
+        background: $txt-color;
+    }
+}

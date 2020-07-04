@@ -1,4 +1,65 @@
-.example {
-    background: fixed url('../../img/bg.jpg') center / cover;
-    height: 100vh;
+@import '../../styles/vars.scss';
+
+
+.homeBg {
+    background: fixed linear-gradient(70deg, rgba(131, 57, 57, 0) 15%, #20161663 85%),
+        linear-gradient(220deg, rgba(17, 17, 17, 0) 20%, #2c2c255e 80%),
+        url('../../img/hBg2.jpg') center / cover;
+    min-height: 100vh;
+
+    .homeContent {
+        padding-top: 140px;
+        color: $txt-color;
+        text-align: center;
+
+        h1 {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: calc((100vw - 480px)/(1280 - 480) * (120 - 80) + 80px);
+            text-align: left;
+            animation: title 1.8s ease;
+            transform: translateX(0px);
+        }
+
+        p {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: calc((100vw - 480px)/(1280 - 480) * (60 - 30) + 30px);
+            padding-left: 150px;
+            animation: title 1.8s ease;
+            transform: translateX(0px);
+        }
+
+        button {
+            margin-top: 30px;
+        }
+    }
+
+}
+
+@keyframes title {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+
+
+.homeBg2 {
+    background: fixed url('../../img/hBg1.jpg') center / cover;
+    min-height: 100vh;
+    backdrop-filter: blur(5px);
+
+    .homeContent {
+        padding-top: 140px;
+    }
+
+    .homePageBlock {
+        border: 1px solid $btn-color;
+        padding: 15px;
+    }
 }

@@ -5,10 +5,10 @@ import styles from './nav.module.scss'
 function Nav() {
   const navItems = [
     { id: 0, to: '/', text: 'Главная' },
-    { id: 1, to: '/about', text: 'О нас' },
+    { id: 1, to: '/event', text: 'События' },
     { id: 2, to: '/articles', text: 'Статьи' },
     { id: 3, to: '/video', text: 'Видео' },
-    { id: 4, to: '/image', text: 'Картинки' },
+    { id: 4, to: '/about', text: 'О нас' },
   ]
 
   return (
@@ -19,7 +19,6 @@ function Nav() {
             activeClassName={styles.active}
             exact
             to={item.to}
-
           >
             {item.text}
           </NavLink>

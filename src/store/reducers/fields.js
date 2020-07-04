@@ -9,6 +9,13 @@ const initialState = {
     firstname: '',
     lastname: '',
   },
+  event: {
+    eventname: '',
+    location: '',
+    date: '',
+    time: '',
+    desc: '',
+  },
 }
 
 const reducer = (state = initialState, action) => {

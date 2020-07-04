@@ -2,7 +2,7 @@ import React from 'react'
 import { func, string } from 'prop-types'
 import styles from './btn.module.scss'
 
-function PrimeBtn({ text, onClick }) {
+function PageBtn({ text, onClick }) {
   return (
     <button className={styles.btn} type="button" onClick={onClick}>
       {text}
@@ -10,9 +10,9 @@ function PrimeBtn({ text, onClick }) {
   )
 }
 
-PrimeBtn.propTypes = {
+PageBtn.propTypes = {
   text: string.isRequired,
-  onClick: func.isRequired,
+  onClick: func,
 }
 
-export default PrimeBtn
+export default PageBtn

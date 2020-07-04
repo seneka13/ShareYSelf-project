@@ -1,0 +1,18 @@
+@import '../../styles/vars.scss';
+
+
+.textArea {
+    width: 100%;
+    height: 100%;
+    border: 1px ridge $border-color;
+    margin-bottom: 15px;
+    padding: 15px;
+    font-weight: lighter;
+    font-size: 20px;
+    color: $txt-color3;
+}
+
+textarea::placeholder {
+    color: $txt-color3;
+}
+
