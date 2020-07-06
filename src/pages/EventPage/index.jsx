@@ -1,15 +1,15 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Container } from 'react-bootstrap'
+import { useSelector, useDispatch } from 'react-redux'
+import { Container, Row } from 'react-bootstrap'
 import PageWrapper from '../../components/PageWrapper'
 import { getEvents } from '../../store/actions'
+import EventCard from './EventCard'
 import styles from './event.module.scss'
 
 function EventPage() {
-  const events = useSelector((state) => ({
+  const { event } = useSelector((state) => ({
     event: state.event.events,
   }))
-  console.log(events)
 
   const dispatch = useDispatch()
 
@@ -17,11 +17,30 @@ function EventPage() {
     const getEventList = () => dispatch(getEvents())
     getEventList()
   }, [dispatch])
+
   return (
     <PageWrapper>
-      <Container>
-        <div className={styles.eventList} />
-      </Container>
+      <div className={styles.eventPageBg}>
+        <Container>
+          <Row className={styles.eventPage}>
+            {event.map((item) => {
+              const { id, eventname, location, date, time, desc, author } = item.data
+              return (
+                <EventCard
+                  key={id}
+                  id={id}
+                  eventname={eventname}
+                  location={location}
+                  date={date}
+                  time={time}
+                  desc={desc}
+                  author={author}
+                />
+              )
+            })}
+          </Row>
+        </Container>
+      </div>
     </PageWrapper>
   )
 }

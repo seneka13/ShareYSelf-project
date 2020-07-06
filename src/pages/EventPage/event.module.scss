@@ -1,0 +1,38 @@
+@import '../../styles/vars.scss';
+
+
+
+.eventPageBg{
+    background: url('../../img/eBg.jpg') center /cover;
+    min-height: 100vh;
+}
+
+.eventPage {
+    padding-top: 140px;
+    text-align: center;
+}
+
+.eventCard {
+    border: 1px solid $border-color;
+    box-shadow: 0 0 10px rgba(59, 56, 56, 0.856);
+    border-radius: 7px;
+    color: $txt-color3;
+    font-size: 14px;
+    text-align: center;
+    padding: 30px 0px;
+    background-color: $light-color;
+
+    img {
+        max-width: 70%;
+    }
+
+    .eventName {
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .eventAuthor {
+        font-weight: bold;
+        font-size: 16px;
+    }
+}

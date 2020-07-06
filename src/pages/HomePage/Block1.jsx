@@ -9,7 +9,7 @@ function Block1() {
       <Container>
         <div className={styles.homeContent}>
           <h1 className={styles.title}>Ваши мысли</h1>
-          <p className={styles.subtitle}>это то чем стоит делится</p>
+          <p className={styles.subtitle}>- то чем стоит делится</p>
           <PageBtn text="Создать событие" />
         </div>
       </Container>

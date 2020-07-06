@@ -15,6 +15,7 @@ function App() {
     const getBody = () => dispatch(getData())
     getBody()
   }, [dispatch])
+
   return (
     <BrowserRouter>
       <Switch>
