@@ -1,18 +1,12 @@
 const initialState = {
-  user: null,
-  data: {
+  events: [],
+  create: {
     success: false,
     loading: false,
     failed: false,
     error: '',
   },
-  login: {
-    success: false,
-    loading: false,
-    failed: false,
-    error: '',
-  },
-  signup: {
+  get: {
     success: false,
     loading: false,
     failed: false,
@@ -22,103 +16,66 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'DATA_SUCCESS':
+    case 'GET_EVENT_SUCCESS':
       return {
         ...state,
-        user: action.data,
-        data: {
+        events: action.data,
+        get: {
           success: true,
           loading: false,
           failed: false,
           error: '',
         },
       }
-    case 'DATA_LOADING':
+    case 'GET_EVENT_LOADING':
       return {
         ...state,
-        data: {
+        get: {
           success: false,
           loading: true,
           failed: false,
           error: '',
         },
       }
-    case 'DATA_FAILED':
+    case 'GET_EVENT_FAILED':
       return {
         ...state,
-        data: {
+        get: {
           success: false,
           loading: false,
           failed: true,
           error: action.error,
         },
       }
-    case 'LOGIN_SUCCESS':
+    case 'CREATE_EVENT_SUCCESS':
       return {
         ...state,
-        user: action.user,
-        login: {
+        create: {
           success: true,
           loading: false,
           failed: false,
           error: '',
         },
       }
-    case 'LOGIN_LOADING':
+    case 'CREATE_EVENT_LOADING':
       return {
         ...state,
-        login: {
+        create: {
           success: false,
           loading: true,
           failed: false,
           error: '',
         },
       }
-    case 'LOGIN_FAILED':
+    case 'CREATE_EVENT_FAILED':
       return {
         ...state,
-        login: {
+        create: {
           success: false,
           loading: false,
           failed: true,
           error: action.error,
         },
-      }
-    case 'SIGNUP_SUCCESS':
-      return {
-        ...state,
-        user: action.user,
-        signup: {
-          success: true,
-          loading: false,
-          failed: false,
-          error: '',
-        },
-      }
-    case 'SIGNUP_LOADING':
-      return {
-        ...state,
-        signup: {
-          success: false,
-          loading: true,
-          failed: false,
-          error: '',
-        },
-      }
-    case 'SIGNUP_FAILED':
-      return {
-        ...state,
-        signup: {
-          success: false,
-          loading: false,
-          failed: true,
-          error: action.error,
-        },
-      }
-    case 'USER_LOGOUT':
-      return {
-        ...state,
-        user: null,
       }
     default:
       return state

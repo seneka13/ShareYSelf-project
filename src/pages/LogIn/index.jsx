@@ -71,17 +71,14 @@ LogIn.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  username: state.fields.signup.username,
-  password: state.fields.signup.password,
-  firstname: state.fields.signup.firstname,
-  lastname: state.fields.signup.lastname,
-  success: state.auth.signup.success,
+  username: state.fields.login.username,
+  password: state.fields.login.password,
   err: state.auth.login.error,
   user: state.auth.user,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  changeValue: (formField, value) => dispatch(changeField('signup', formField, value)),
+  changeValue: (formField, value) => dispatch(changeField('login', formField, value)),
   clear: () => dispatch(clearFields()),
   setBody: (body) => dispatch(loginAction(body)),
 })

@@ -1,12 +1,12 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { string, func, number, oneOfType } from 'prop-types'
+import { string, func, number, object, oneOfType } from 'prop-types'
 import PrimeInput from '../PrimeInput'
 import PrimeBtn from '../PrimeBtn'
 import PrimeText from '../PrimeText'
 import Logo from '../Logo'
-import { changeField, clearFields } from '../../store/actions'
+import { changeField, clearFields, createEvent } from '../../store/actions'
 import styles from './event.module.scss'
 
 function EventForm({
@@ -15,7 +15,17 @@ function EventForm({
   date,
   time,
   desc,
-  changeValue }) {
+  changeValue,
+  creEvent,
+  clear,
+  user,
+}) {
+  const handleClick = () => {
+    if (!user) return
+    const author = `${user.firstname} ${user.lastname}`
+    creEvent({ eventname, location, date, time, desc, author })
+    clear()
+  }
   return (
     <form className={styles.eventForm}>
       <Logo />
@@ -64,7 +74,7 @@ function EventForm({
           />
         </Col>
       </Row>
-      <PrimeBtn text="Создать" onClick={() => console.log('ds')} />
+      <PrimeBtn text="Создать" onClick={handleClick} />
     </form>
   )
 }
@@ -75,18 +85,24 @@ EventForm.propTypes = {
   date: oneOfType([string.isRequired, number.isRequired]),
   time: oneOfType([string.isRequired, number.isRequired]),
   desc: oneOfType([string.isRequired, number.isRequired]),
+  clear: func,
+  creEvent: func,
   changeValue: func,
+  user: object,
 }
 
 const mapStateToProps = (state) => ({
-  event: state.fields.event.username,
-  location: state.fields.event.password,
-  date: state.fields.event.firstname,
-  time: state.fields.event.lastname,
+  eventname: state.fields.event.eventname,
+  location: state.fields.event.location,
+  date: state.fields.event.date,
+  time: state.fields.event.time,
+  desc: state.fields.event.desc,
+  user: state.auth.user,
 })
 
 const mapDispatchToProps = (dispatch) => ({
   changeValue: (formField, value) => dispatch(changeField('event', formField, value)),
+  creEvent: (body) => dispatch(createEvent(body)),
   clear: () => dispatch(clearFields()),
 })
 

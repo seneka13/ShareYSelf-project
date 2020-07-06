@@ -12,7 +12,7 @@
         color: $txt-color;
         text-align: center;
 
-        h1 {
+        .title {
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             font-size: calc((100vw - 480px)/(1280 - 480) * (120 - 80) + 80px);
             text-align: left;
@@ -20,7 +20,7 @@
             transform: translateX(0px);
         }
 
-        p {
+        .subtitle {
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             font-size: calc((100vw - 480px)/(1280 - 480) * (60 - 30) + 30px);
             padding-left: 150px;
