@@ -3,7 +3,8 @@
 
 
 .eventPageBg{
-    background: url('../../img/eBg.jpg') center /cover;
+    background: linear-gradient(70deg, rgba(131, 57, 57, 0) 15%, #201616ad 85%),
+    linear-gradient(220deg, rgba(17, 17, 17, 0) 20%, #2c2c25a8 80%), url('../../img/eBg.jpg') center /cover;
     min-height: 100vh;
 }
 
@@ -14,7 +15,7 @@
 
 .eventCard {
     border: 1px solid $border-color;
-    box-shadow: 0 0 10px rgba(59, 56, 56, 0.856);
+    box-shadow: 0 3px 10px rgba(114, 114, 114, 0.856);
     border-radius: 7px;
     color: $txt-color3;
     font-size: 14px;

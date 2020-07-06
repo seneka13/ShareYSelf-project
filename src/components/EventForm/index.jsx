@@ -28,7 +28,7 @@ function EventForm({
   }
   return (
     <form className={styles.eventForm}>
-      <Logo />
+      <Logo />b
       <Row>
         <Col xs={12} md={6} className="d-flex flex-column align-items-center">
           <PrimeInput
