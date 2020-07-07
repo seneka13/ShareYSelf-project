@@ -1,3 +1,18 @@
+import {
+  USER_DATA_LOADING,
+  USER_DATA_SUCCESS,
+  USER_DATA_FAILED,
+
+  LOGIN_LOADING,
+  LOGIN_SUCCESS,
+  LOGIN_FAILED,
+
+  SIGNUP_LOADING,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAILED,
+
+  USER_LOGOUT } from '../constants'
+
 const initialState = {
   user: null,
   data: {
@@ -22,7 +37,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'DATA_SUCCESS':
+    case USER_DATA_SUCCESS:
       return {
         ...state,
         user: action.data,
@@ -33,7 +48,7 @@ const reducer = (state = initialState, action) => {
           error: '',
         },
       }
-    case 'DATA_LOADING':
+    case USER_DATA_LOADING:
       return {
         ...state,
         data: {
@@ -43,7 +58,7 @@ const reducer = (state = initialState, action) => {
           error: '',
         },
       }
-    case 'DATA_FAILED':
+    case USER_DATA_FAILED:
       return {
         ...state,
         data: {
@@ -53,7 +68,7 @@ const reducer = (state = initialState, action) => {
           error: action.error,
         },
       }
-    case 'LOGIN_SUCCESS':
+    case LOGIN_SUCCESS:
       return {
         ...state,
         user: action.user,
@@ -64,7 +79,7 @@ const reducer = (state = initialState, action) => {
           error: '',
         },
       }
-    case 'LOGIN_LOADING':
+    case LOGIN_LOADING:
       return {
         ...state,
         login: {
@@ -74,7 +89,7 @@ const reducer = (state = initialState, action) => {
           error: '',
         },
       }
-    case 'LOGIN_FAILED':
+    case LOGIN_FAILED:
       return {
         ...state,
         login: {
@@ -84,7 +99,7 @@ const reducer = (state = initialState, action) => {
           error: action.error,
         },
       }
-    case 'SIGNUP_SUCCESS':
+    case SIGNUP_SUCCESS:
       return {
         ...state,
         user: action.user,
@@ -95,7 +110,7 @@ const reducer = (state = initialState, action) => {
           error: '',
         },
       }
-    case 'SIGNUP_LOADING':
+    case SIGNUP_LOADING:
       return {
         ...state,
         signup: {
@@ -105,7 +120,7 @@ const reducer = (state = initialState, action) => {
           error: '',
         },
       }
-    case 'SIGNUP_FAILED':
+    case SIGNUP_FAILED:
       return {
         ...state,
         signup: {
@@ -115,7 +130,7 @@ const reducer = (state = initialState, action) => {
           error: action.error,
         },
       }
-    case 'USER_LOGOUT':
+    case USER_LOGOUT:
       return {
         ...state,
         user: null,

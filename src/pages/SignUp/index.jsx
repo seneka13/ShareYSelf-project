@@ -23,6 +23,7 @@ function SignUp({
     creAccount({ username, password, firstname, lastname })
     clear()
   }
+
   return (
     <div className={styles.signupPage}>
       <Container className="d-flex justify-content-center">

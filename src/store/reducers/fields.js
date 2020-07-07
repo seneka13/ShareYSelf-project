@@ -1,3 +1,8 @@
+import {
+  CHANGE_FIELDS,
+  CLEAR_FIELDS,
+} from '../constants'
+
 const initialState = {
   login: {
     username: '',
@@ -20,7 +25,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'CHANGE_FIELD':
+    case CHANGE_FIELDS:
       return {
         ...state,
         [action.formName]: {
@@ -28,7 +33,7 @@ const reducer = (state = initialState, action) => {
           [action.fieldName]: action.value,
         },
       }
-    case 'CLEAR_FIELDS':
+    case CLEAR_FIELDS:
       return {
         ...state,
         login: initialState.login,

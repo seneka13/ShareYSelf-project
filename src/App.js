@@ -2,7 +2,7 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { getData } from './store/actions'
+import { getData, getEvents } from './store/actions'
 import HomePage from './pages/HomePage'
 import SignUp from './pages/SignUp'
 import LogIn from './pages/LogIn'
@@ -14,6 +14,8 @@ function App() {
   React.useEffect(() => {
     const getBody = () => dispatch(getData())
     getBody()
+    const getEventList = () => dispatch(getEvents())
+    getEventList()
   }, [dispatch])
 
   return (

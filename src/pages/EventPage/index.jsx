@@ -1,8 +1,7 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Container, Row } from 'react-bootstrap'
 import PageWrapper from '../../components/PageWrapper'
-import { getEvents } from '../../store/actions'
 import EventCard from './EventCard'
 import styles from './event.module.scss'
 
@@ -11,12 +10,6 @@ function EventPage() {
     event: state.event.events,
   }))
 
-  const dispatch = useDispatch()
-
-  React.useEffect(() => {
-    const getEventList = () => dispatch(getEvents())
-    getEventList()
-  }, [dispatch])
 
   return (
     <PageWrapper>
