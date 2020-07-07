@@ -11,6 +11,7 @@ import {
   DELETE_EVENT_SUCCESS,
   DELETE_EVENT_FAILED,
 } from '../constants'
+import stateCreator from '../../services/stateCreator'
 
 const initialState = {
   events: [],
@@ -34,92 +35,47 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         events: action.data,
-        get: {
-          success: true,
-          loading: false,
-          failed: false,
-          error: '',
-        },
+        get: stateCreator('success'),
       }
     case GET_EVENT_LOADING:
       return {
         ...state,
-        get: {
-          success: false,
-          loading: true,
-          failed: false,
-          error: '',
-        },
+        get: stateCreator('loading'),
       }
     case GET_EVENT_FAILED:
       return {
         ...state,
-        get: {
-          success: false,
-          loading: false,
-          failed: true,
-          error: action.error,
-        },
+        get: stateCreator('failed', action.error),
       }
     case CREATE_EVENT_SUCCESS:
       return {
         ...state,
-        create: {
-          success: true,
-          loading: false,
-          failed: false,
-          error: '',
-        },
+        create: stateCreator('success'),
       }
     case CREATE_EVENT_LOADING:
       return {
         ...state,
-        create: {
-          success: false,
-          loading: true,
-          failed: false,
-          error: '',
-        },
+        create: stateCreator('loading'),
       }
     case CREATE_EVENT_FAILED:
       return {
         ...state,
-        create: {
-          success: false,
-          loading: false,
-          failed: true,
-          error: action.error,
-        },
+        create: stateCreator('failed', action.error),
       }
     case DELETE_EVENT_SUCCESS:
       return {
         ...state,
-        delete: {
-          success: true,
-          loading: false,
-          failed: false,
-          error: '',
-        },
+        delete: stateCreator('success'),
       }
     case DELETE_EVENT_LOADING:
       return {
         ...state,
-        delete: {
-          success: false,
-          loading: true,
-          failed: false,
-          error: '',
-        },
+        delete: stateCreator('loading'),
       }
     case DELETE_EVENT_FAILED:
       return {
         ...state,
-        delete: {
-          success: false,
-          loading: false,
-          failed: true,
-          error: action.error,
-        },
+        delete: stateCreator('failed', action.error),
       }
     default:
       return state

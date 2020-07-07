@@ -12,6 +12,7 @@ import {
   SIGNUP_FAILED,
 
   USER_LOGOUT } from '../constants'
+import stateCreator from '../../services/stateCreator'
 
 const initialState = {
   user: null,
@@ -41,94 +42,49 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.data,
-        data: {
-          success: true,
-          loading: false,
-          failed: false,
-          error: '',
-        },
+        data: stateCreator('success'),
       }
     case USER_DATA_LOADING:
       return {
         ...state,
-        data: {
-          success: false,
-          loading: true,
-          failed: false,
-          error: '',
-        },
+        data: stateCreator('loading'),
       }
     case USER_DATA_FAILED:
       return {
         ...state,
-        data: {
-          success: false,
-          loading: false,
-          failed: true,
-          error: action.error,
-        },
+        data: stateCreator('failed', action.error),
       }
     case LOGIN_SUCCESS:
       return {
         ...state,
         user: action.user,
-        login: {
-          success: true,
-          loading: false,
-          failed: false,
-          error: '',
-        },
+        login: stateCreator('success'),
       }
     case LOGIN_LOADING:
       return {
         ...state,
-        login: {
-          success: false,
-          loading: true,
-          failed: false,
-          error: '',
-        },
+        login: stateCreator('loading'),
       }
     case LOGIN_FAILED:
       return {
         ...state,
-        login: {
-          success: false,
-          loading: false,
-          failed: true,
-          error: action.error,
-        },
+        login: stateCreator('failed', action.error),
       }
     case SIGNUP_SUCCESS:
       return {
         ...state,
         user: action.user,
-        signup: {
-          success: true,
-          loading: false,
-          failed: false,
-          error: '',
-        },
+        signup: stateCreator('success'),
       }
     case SIGNUP_LOADING:
       return {
         ...state,
-        signup: {
-          success: false,
-          loading: true,
-          failed: false,
-          error: '',
-        },
+        signup: stateCreator('loading'),
       }
     case SIGNUP_FAILED:
       return {
         ...state,
-        signup: {
-          success: false,
-          loading: false,
-          failed: true,
-          error: action.error,
-        },
+        signup: stateCreator('failed', action.error),
       }
     case USER_LOGOUT:
       return {
