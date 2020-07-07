@@ -25,6 +25,7 @@ function EventPage({ id, eventname, location, date, time, desc, author }) {
         <div className={styles.eventDate}>Дата проведения: {new Date(date).toLocaleDateString()}</div>
         <div className={styles.eventDate}>Время проведения: {time}</div>
         {timeValue > timeNow && (<div>Времени до начала: {daysTimer}д. {hoursTimer}ч. {minutesTimer}м. {secondsTimer}с.</div>)}
+        {timeValue < timeNow && (<div className={styles.eventPast}>Событие прошло</div>)}
         <div className={styles.eventAuthor}>{author}</div>
       </div>
     </Col>
