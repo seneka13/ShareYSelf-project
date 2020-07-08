@@ -19,7 +19,7 @@ function PrimeInput({ id, name, type, placeholder, value, onChange }) {
 }
 
 PrimeInput.propTypes = {
-  placeholder: string.isRequired,
+  placeholder: string,
   onChange: func.isRequired,
   value: string,
   type: string,

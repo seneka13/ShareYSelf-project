@@ -20,8 +20,8 @@ function LogIn({
   user,
 }) {
   const handleClick = () => {
+    if (!username || !password || err) return
     setBody({ username, password })
-    if (!username || !password) return
     clear()
   }
 
@@ -48,6 +48,7 @@ function LogIn({
               onChange={(value) => changeValue('password', value)}
             />
             <div className={styles.formErr}>{err}</div>
+            {!username(<div className={styles.formErr}>Все поля обязательны для заполнения</div>)}
             <PrimeBtn
               text="Войти"
               onClick={handleClick}

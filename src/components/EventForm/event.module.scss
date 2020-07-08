@@ -4,11 +4,10 @@
     text-align: center;
     padding: 30px 20px;
     background: $light-color;
-    border-radius: 10px;
+    border-radius: 5px;
 
     h1 {
         margin-bottom: 30px;
-        border-bottom: 1px solid $txt-color3;
     }
 
     input {
@@ -20,7 +19,7 @@
     }
 
     button {
-        margin-top: 20px;
+        margin-top: 0px;
         width: 300px;
         font-size: 20px;
     }
@@ -29,6 +28,8 @@
         color: $error-color;
         height: 30px;
         font-size: 15px;
-        font-weight: lighter;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     } 
 }

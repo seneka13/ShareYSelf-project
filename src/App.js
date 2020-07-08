@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage'
 import SignUp from './pages/SignUp'
 import LogIn from './pages/LogIn'
 import EventPage from './pages/EventPage'
+import EventInfo from './pages/EventPage/EventInfo'
 
 function App() {
   const dispatch = useDispatch()
@@ -23,6 +24,7 @@ function App() {
       <Switch>
         <Route path="/" component={HomePage} exact />
         <Route path="/event" component={EventPage} exact />
+        <Route path="/event/:eventId" component={EventInfo} exact />
         {/* <Route path="/resume" component={Articles} exact />
         <Route path="/contact" component={Video} exact />
         <Route path="/portfolio" component={Image} exact /> */}
@@ -30,7 +32,7 @@ function App() {
         <Route path="/login" component={LogIn} exact />
 
         {/* <Route path="/portfolio/contact-list" component={ContactList} exact />
-        <Route path="/portfolio/contact-list/:contactId" component={ContactInfo} exact /> */}
+        <Route path="/event/:eventId" component={eventInfo} exact /> */}
       </Switch>
     </BrowserRouter>
   )

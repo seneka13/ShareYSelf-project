@@ -16,7 +16,7 @@ const initialState = {
   },
   event: {
     eventname: '',
-    location: '',
+    place: '',
     date: '',
     time: '',
     desc: '',

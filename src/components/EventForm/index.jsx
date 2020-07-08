@@ -11,10 +11,11 @@ import styles from './event.module.scss'
 
 function EventForm({
   eventname,
-  location,
+  place,
   date,
   time,
   desc,
+  err,
   changeValue,
   creEvent,
   clear,
@@ -23,7 +24,7 @@ function EventForm({
   const handleClick = () => {
     if (!user) return
     const author = `${user.firstname} ${user.lastname}`
-    creEvent({ eventname, location, date, time, desc, author })
+    creEvent({ eventname, place, date, time, desc, author })
     clear()
   }
   return (
@@ -40,17 +41,16 @@ function EventForm({
             onChange={(value) => changeValue('eventname', value)}
           />
           <PrimeInput
-            id="location"
+            id="place"
             type="text"
             placeholder="Место проведения"
             name="eventForm"
-            value={location}
-            onChange={(value) => changeValue('location', value)}
+            value={place}
+            onChange={(value) => changeValue('place', value)}
           />
           <PrimeInput
             id="date"
             type="date"
-            placeholder="Название события"
             name="eventForm"
             value={date}
             onChange={(value) => changeValue('date', value)}
@@ -58,7 +58,6 @@ function EventForm({
           <PrimeInput
             id="time"
             type="time"
-            placeholder="Название события"
             name="eventForm"
             value={time}
             onChange={(value) => changeValue('time', value)}
@@ -74,6 +73,7 @@ function EventForm({
           />
         </Col>
       </Row>
+      <div className={styles.formErr}>{err}</div>
       <PrimeBtn text="Создать" onClick={handleClick} />
     </form>
   )
@@ -81,10 +81,11 @@ function EventForm({
 
 EventForm.propTypes = {
   eventname: oneOfType([string.isRequired, number.isRequired]),
-  location: oneOfType([string.isRequired, number.isRequired]),
+  place: oneOfType([string.isRequired, number.isRequired]),
   date: oneOfType([string.isRequired, number.isRequired]),
   time: oneOfType([string.isRequired, number.isRequired]),
   desc: oneOfType([string.isRequired, number.isRequired]),
+  err: string,
   clear: func,
   creEvent: func,
   changeValue: func,
@@ -93,10 +94,11 @@ EventForm.propTypes = {
 
 const mapStateToProps = (state) => ({
   eventname: state.fields.event.eventname,
-  location: state.fields.event.location,
+  place: state.fields.event.place,
   date: state.fields.event.date,
   time: state.fields.event.time,
   desc: state.fields.event.desc,
+  err: state.event.create.error,
   user: state.auth.user,
 })
 

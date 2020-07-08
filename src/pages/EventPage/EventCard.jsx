@@ -1,9 +1,11 @@
 import React from 'react'
 import { Col } from 'react-bootstrap'
+import { string, number, oneOfType } from 'prop-types'
+import { NavLink } from 'react-router-dom'
 import img from '../../img/event.png'
 import styles from './event.module.scss'
 
-function EventPage({ id, eventname, location, date, time, desc, author }) {
+function EventCard({ id, eventname, place, date, time, desc, author }) {
   const [timeNow, setTime] = React.useState(new Date())
   const timeValue = new Date(`${date}T${time}`).getTime()
   const diff = timeValue - timeNow
@@ -12,24 +14,45 @@ function EventPage({ id, eventname, location, date, time, desc, author }) {
   const minutesTimer = Math.floor((diff / 1000 / 60) % 60)
   const secondsTimer = Math.floor((diff / 1000) % 60)
 
-  setInterval(() => {
-    setTime(new Date())
-  }, 1000)
+  React.useEffect(() => {
+    const timerId = setInterval(() => {
+      setTime(new Date())
+    }, 1000)
+    return () => {
+      clearInterval(timerId)
+    }
+  }, [])
 
   return (
     <Col xs={12} md={6} lg={4} className="mb-5">
-      <div className={styles.eventCard}>
-        <img src={img} alt="event" />
-        <div className={styles.eventName}>{eventname}</div>
-        <div className={styles.eventLocation}>Место проведения: {location}</div>
-        <div className={styles.eventDate}>Дата проведения: {new Date(date).toLocaleDateString()}</div>
-        <div className={styles.eventDate}>Время проведения: {time}</div>
-        {timeValue > timeNow && (<div>Времени до начала: {daysTimer}д. {hoursTimer}ч. {minutesTimer}м. {secondsTimer}с.</div>)}
-        {timeValue < timeNow && (<div className={styles.eventPast}>Событие прошло</div>)}
-        <div className={styles.eventAuthor}>{author}</div>
-      </div>
+      <NavLink to={{
+        pathname: `/event/${id}`,
+        state: { event: { id, eventname, place, date, time, desc, author } },
+      }}
+      >
+        <div className={styles.eventCard}>
+          <img src={img} alt="event" />
+          <div className={styles.eventName}>{eventname}</div>
+          <div className={styles.eventplace}>Место проведения: {place}</div>
+          <div className={styles.eventDate}>Дата проведения: {new Date(date).toLocaleDateString()}</div>
+          <div className={styles.eventDate}>Время проведения: {time}</div>
+          {timeValue > timeNow && (<div>Времени до начала: {daysTimer}д. {hoursTimer}ч. {minutesTimer}м. {secondsTimer}с.</div>)}
+          {timeValue < timeNow && (<div className={styles.eventPast}>Событие прошло</div>)}
+          <div className={styles.eventAuthor}>{author}</div>
+        </div>
+      </NavLink>
     </Col>
   )
 }
 
-export default EventPage
+EventCard.propTypes = {
+  id: oneOfType([string.isRequired, number.isRequired]),
+  eventname: oneOfType([string.isRequired, number.isRequired]),
+  place: oneOfType([string.isRequired, number.isRequired]),
+  date: oneOfType([string.isRequired, number.isRequired]),
+  time: oneOfType([string.isRequired, number.isRequired]),
+  author: oneOfType([string.isRequired, number.isRequired]),
+  desc: oneOfType([string.isRequired, number.isRequired]),
+}
+
+export default EventCard
