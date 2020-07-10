@@ -66,6 +66,7 @@ function SignUp({
             <PrimeBtn
               text="Зарегестрироваться"
               onClick={handleClick}
+              className={styles.btn}
             />
             <p className={styles.signupText}>
               Нажимая кнопку «Зарегистрироваться»,

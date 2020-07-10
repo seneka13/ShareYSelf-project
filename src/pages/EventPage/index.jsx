@@ -7,8 +7,9 @@ import EventCard from './EventCard'
 import styles from './event.module.scss'
 
 function EventPage() {
-  const { event } = useSelector((state) => ({
+  const { event, error } = useSelector((state) => ({
     event: state.event.events,
+    error: state.event.get.error,
   }))
 
   const dispatch = useDispatch()
@@ -39,6 +40,7 @@ function EventPage() {
               )
             })}
           </Row>
+          {error && (<div className={styles.getError}>{error}</div>)}
         </Container>
       </div>
     </PageWrapper>

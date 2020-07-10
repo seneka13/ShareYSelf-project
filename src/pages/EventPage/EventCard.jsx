@@ -34,9 +34,14 @@ function EventCard({ id, eventname, place, date, time, desc, author }) {
           <img src={img} alt="event" />
           <div className={styles.eventName}>{eventname}</div>
           <div className={styles.eventplace}>Место проведения: {place}</div>
-          <div className={styles.eventDate}>Дата проведения: {new Date(date).toLocaleDateString()}</div>
+          <div className={styles.eventDate}>
+            Дата проведения: {new Date(date).toLocaleDateString()}
+          </div>
           <div className={styles.eventDate}>Время проведения: {time}</div>
-          {timeValue > timeNow && (<div>Времени до начала: {daysTimer}д. {hoursTimer}ч. {minutesTimer}м. {secondsTimer}с.</div>)}
+          {timeValue > timeNow && (
+          <div>Времени до начала: {daysTimer}д. {hoursTimer}ч. {minutesTimer}м. {secondsTimer}с.
+          </div>
+          )}
           {timeValue < timeNow && (<div className={styles.eventPast}>Событие прошло</div>)}
           <div className={styles.eventAuthor}>{author}</div>
         </div>

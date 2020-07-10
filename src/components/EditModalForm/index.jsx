@@ -1,15 +1,13 @@
 import React from 'react'
-import { Col, Row } from 'react-bootstrap'
+import { string, func, number, oneOfType } from 'prop-types'
 import { connect } from 'react-redux'
-import { string, func, number, object, oneOfType } from 'prop-types'
-import PrimeInput from '../PrimeInput'
 import PrimeBtn from '../PrimeBtn'
+import PrimeInput from '../PrimeInput'
 import PrimeText from '../PrimeText'
-import Logo from '../Logo'
-import { changeField, clearFields, createEvent } from '../../store/actions'
-import styles from './event.module.scss'
+import styles from './modal.module.scss'
+import { changeField, clearFields, editEvent } from '../../store/actions'
 
-function EventForm({
+function EditModalForm({
   eventname,
   place,
   date,
@@ -17,21 +15,30 @@ function EventForm({
   desc,
   err,
   changeValue,
-  creEvent,
-  clear,
-  user,
 }) {
-  const handleClick = () => {
-    if (!user) return
-    const author = `${user.firstname} ${user.lastname}`
-    creEvent({ eventname, place, date, time, desc, author })
-    clear()
-  }
+  const [show, setShow] = React.useState(false)
+  const isVisible = show ? styles.isShow : styles.notShow
+  const handleShow = () => setShow(!show)
+  const modalRef = React.useRef(null)
+
+  React.useEffect(() => {
+    const handleClick = (e) => {
+      if (modalRef.current.contains(e.target)) {
+        return
+      }
+      if (show === true) setShow(false)
+    }
+    document.addEventListener('click', handleClick)
+    return () => {
+      document.removeEventListener('click', handleClick)
+    }
+  }, [show])
+
   return (
-    <form className={styles.eventForm}>
-      <Logo />
-      <Row>
-        <Col xs={12} md={6} className="d-flex flex-column align-items-center">
+    <>
+      <PrimeBtn className={styles.editBtn} text="Редактировать" onClick={handleShow} />
+      <div role="form" className={isVisible}>
+        <div ref={modalRef} className={styles.modal}>
           <PrimeInput
             id="eventname"
             type="text"
@@ -62,8 +69,6 @@ function EventForm({
             value={time}
             onChange={(value) => changeValue('time', value)}
           />
-        </Col>
-        <Col>
           <PrimeText
             id="eventText"
             placeholder="Описание"
@@ -71,25 +76,22 @@ function EventForm({
             value={desc}
             onChange={(value) => changeValue('desc', value)}
           />
-        </Col>
-      </Row>
-      <div className={styles.formErr}>{err}</div>
-      <PrimeBtn text="Создать" onClick={handleClick} className={styles.btn} />
-    </form>
+          <div className={styles.formErr}>{err}</div>
+          <PrimeBtn className={styles.editBtn} text="Отправить" />
+        </div>
+      </div>
+    </>
   )
 }
 
-EventForm.propTypes = {
+EditModalForm.propTypes = {
   eventname: oneOfType([string.isRequired, number.isRequired]),
   place: oneOfType([string.isRequired, number.isRequired]),
   date: oneOfType([string.isRequired, number.isRequired]),
   time: oneOfType([string.isRequired, number.isRequired]),
   desc: oneOfType([string.isRequired, number.isRequired]),
   err: string,
-  clear: func,
-  creEvent: func,
   changeValue: func,
-  user: object,
 }
 
 const mapStateToProps = (state) => ({
@@ -104,8 +106,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   changeValue: (formField, value) => dispatch(changeField('event', formField, value)),
-  creEvent: (body) => dispatch(createEvent(body)),
+  edEvent: (id, body) => dispatch(editEvent(id, body)),
   clear: () => dispatch(clearFields()),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventForm)
+export default connect(mapStateToProps, mapDispatchToProps)(EditModalForm)

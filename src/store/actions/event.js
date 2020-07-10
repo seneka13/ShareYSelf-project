@@ -10,6 +10,10 @@ import {
   DELETE_EVENT_LOADING,
   DELETE_EVENT_SUCCESS,
   DELETE_EVENT_FAILED,
+
+  EDIT_EVENT_LOADING,
+  EDIT_EVENT_SUCCESS,
+  EDIT_EVENT_FAILED,
 } from '../constants'
 
 const endpoint = 'http://localhost:8220'
@@ -25,7 +29,7 @@ const errorHandler = (error) => (error.response ? error.response.data : error.me
 export const getEvents = () => (dispatch) => {
   dispatch({ type: GET_EVENT_LOADING })
   fetch(`${endpoint}/get-events`)
-    .then((response) => checkResponse(response, 'Ошибка загрузки'))
+    .then((response) => checkResponse(response, 'Ошибка загрузки событий'))
     .then((data) => {
       dispatch({ type: GET_EVENT_SUCCESS, data })
     })
@@ -61,5 +65,23 @@ export const deleteEvent = (id) => (dispatch) => {
     })
     .catch((error) => {
       dispatch({ type: DELETE_EVENT_FAILED, error: errorHandler(error) })
+    })
+}
+
+export const editEvent = (id, body) => (dispatch) => {
+  dispatch({ type: EDIT_EVENT_LOADING })
+  fetch(`${endpoint}/edit-event/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  })
+    .then((response) => checkResponse(response, 'Изменение невозможно'))
+    .then(() => {
+      dispatch({ type: EDIT_EVENT_SUCCESS })
+    })
+    .catch((error) => {
+      dispatch({ type: EDIT_EVENT_FAILED, error: errorHandler(error) })
     })
 }

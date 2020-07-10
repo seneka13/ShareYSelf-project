@@ -33,3 +33,17 @@
         justify-content: center;
     } 
 }
+
+.btn {
+    width: 200px;
+    height: 45px;
+    background: $btn-color;
+    border-radius: 20px;
+    color: $txt-color;
+    font-weight: lighter;
+    transition: background-color ease 0.5s;
+    &:hover {
+        background: $btn-color2;
+        color: $txt-color;
+    }
+}

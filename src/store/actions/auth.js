@@ -64,7 +64,7 @@ export const signupAction = (body) => (dispatch) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
   })
-    .then((response) => checkResponse(response, 'Пожалуйста, заполните все поля*'))
+    .then((response) => checkResponse(response, 'Такой пользователь уже существует'))
     .then(({ user }) => {
       window.localStorage.setItem('token', user.token)
       dispatch({ type: SIGNUP_SUCCESS, user: user.data })

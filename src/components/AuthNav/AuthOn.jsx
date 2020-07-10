@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { Redirect, NavLink } from 'react-router-dom'
 import ProfileIcon from '../Icons/ProfileIcon'
 import { userLogOut } from '../../store/actions'
 
@@ -21,7 +21,11 @@ function AuthOn() {
 
   return (
     <>
-      <li className={styles.userName}><ProfileIcon className={styles.icon} />{user && user.firstname} {user && user.lastname}</li>
+      <li className={styles.userName}>
+        <NavLink to="/" exact>
+          <ProfileIcon className={styles.icon} />{user && user.firstname} {user && user.lastname}
+        </NavLink>
+      </li>
       <li>
         <button
           onClick={handleLogOut}

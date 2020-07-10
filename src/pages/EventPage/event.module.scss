@@ -13,6 +13,13 @@
     text-align: center;
 }
 
+.eventInfo {
+    background: linear-gradient(70deg, rgba(131, 57, 57, 0) 15%, #201616ad 85%),
+        linear-gradient(220deg, rgba(17, 17, 17, 0) 20%, #2c2c25a8 80%), url('../../img/eBg.jpg') center /cover;
+    min-height: 100vh;
+    color: $txt-color;
+}
+
 .eventCard {
     border: 1px solid $border-color;
     box-shadow: 0 1px 10px rgba(66, 65, 65, 0.856);
@@ -46,5 +53,26 @@
 
     .eventPast {
         color: $error-color;
+    }
+}
+
+.getError {
+    color: $error-color;
+    text-align: center;
+    font-size: 30px;
+    font-weight: lighter;
+}
+
+.delBtn{
+    background: $error-color;
+    text-align: center;
+    font-weight: lighter;
+    padding: 10px;
+    border-radius: 10px;
+    width: 150px;
+    margin-left: 20px;
+    transition: background-color ease 0.5s;
+    &:hover {
+        background: $btn-color2;
     }
 }

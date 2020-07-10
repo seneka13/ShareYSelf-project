@@ -51,6 +51,7 @@ function LogIn({
             <PrimeBtn
               text="Войти"
               onClick={handleClick}
+              className={styles.btn}
             />
             <HelpLink />
           </form>

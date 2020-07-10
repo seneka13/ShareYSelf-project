@@ -7,9 +7,7 @@ function Block3() {
   return (
     <div className={styles.homeBg2}>
       <Container className="pt-5 pb-5">
-        <div className={styles.homeContent}>
-          <EventForm />
-        </div>
+        <EventForm />
       </Container>
     </div>
   )

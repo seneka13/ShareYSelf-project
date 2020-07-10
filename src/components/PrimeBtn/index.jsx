@@ -1,10 +1,9 @@
 import React from 'react'
 import { func, string } from 'prop-types'
-import styles from './btn.module.scss'
 
-function PrimeBtn({ text, onClick }) {
+function PrimeBtn({ text, onClick, className }) {
   return (
-    <button className={styles.btn} type="button" onClick={onClick}>
+    <button className={className} type="button" onClick={onClick}>
       {text}
     </button>
   )
@@ -13,6 +12,7 @@ function PrimeBtn({ text, onClick }) {
 PrimeBtn.propTypes = {
   text: string.isRequired,
   onClick: func.isRequired,
+  className: string,
 }
 
 export default PrimeBtn
