@@ -4,7 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 1. Get the source code:
 
-### `git clone https://github.com/seneka13/ShareYSelf-project.git`
+### `git clone` (git clone https://github.com/seneka13/ShareYSelf-project.git)
+
 
 2. Install dependencies:
 
@@ -20,5 +21,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 5. You also need connect API from:
 
-### `https://github.com/seneka13/ShareYSelf-api`
+### (https://github.com/seneka13/ShareYSelf-api)
 
