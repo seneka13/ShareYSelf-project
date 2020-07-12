@@ -4,7 +4,7 @@ import { Container } from 'react-bootstrap'
 import { string, number, object, oneOfType } from 'prop-types'
 import PrimeBtn from '../../components/PrimeBtn'
 import { deleteEvent } from '../../store/actions'
-import EditModalForm from '../../components/EditModalForm'
+import EditModalForm from './EditModalForm'
 
 import PageWrapper from '../../components/PageWrapper'
 import styles from './event.module.scss'
@@ -23,28 +23,26 @@ function EventInfo({ location, history }) {
     history.goBack()
   }
 
-  const handleEdit = () => {
-    delEvent(id)
-    history.goBack()
-  }
-
   return (
     <PageWrapper>
       <div className={styles.eventInfo}>
         <Container>
-          <div className={styles.eventPage}>
-            <h3>{eventname}</h3>
-            <div>{place}</div>
-            <div>{new Date(date).toLocaleDateString()} г.</div>
-            <div>{time} ч.</div>
-            <p>Событие: <br /> {desc}</p>
-            <address>{author}</address>
+          <div className={styles.eventInfoContent}>
+            <h3 className={styles.eventname}>{eventname}</h3>
+            <div className={styles.place}>Место проведения: {place}</div>
+            <div className={styles.date}>Дата события: {new Date(date).toLocaleDateString()} г.</div>
+            <div className={styles.time}>Время начала: {time} ч.</div>
+            <p className={styles.desc}>Событие: <br /> {desc}</p>
+            <address className={styles.author}>Автор: {author}</address>
             {(user && (`${user.firstname} ${user.lastname}`) === author)
           && (
-          <>
-            <EditModalForm />
+          <div className={styles.controlBtns}>
+            <EditModalForm
+              id={id}
+              author={author}
+            />
             <PrimeBtn className={styles.delBtn} text="Удалить событие" onClick={handleDelete} />
-          </>
+          </div>
           ) }
           </div>
         </Container>

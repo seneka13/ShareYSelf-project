@@ -31,6 +31,19 @@
 
 }
 
+.btn {
+    width: 250px;
+    height: 70px;
+    background-color: $light-color;
+    color: $txt-color3;
+    font-size: 27px;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: $txt-color;
+    }
+}
+
 
 .homeInfo {
     max-height: 400px;
@@ -41,7 +54,8 @@
     h3 {
         font-weight: normal;
         font-size: 35px;
-        margin-bottom: 20px;;
+        margin-bottom: 20px;
+        ;
     }
 
     a {

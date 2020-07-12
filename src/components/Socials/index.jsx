@@ -14,7 +14,7 @@ function Socials() {
   ]
 
   return (
-    <>
+    <div>
       {socialLinks.map((item) => {
         const Icon = item.social
         return (
@@ -28,7 +28,7 @@ function Socials() {
           </a>
         )
       })}
-    </>
+    </div>
   )
 }
 

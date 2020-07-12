@@ -21,11 +21,15 @@ function EventForm({
   clear,
   user,
 }) {
+  const [formErr, setFormErr] = React.useState('')
   const handleClick = () => {
-    if (!user) return
-    const author = `${user.firstname} ${user.lastname}`
-    creEvent({ eventname, place, date, time, desc, author })
-    clear()
+    if (!user) setFormErr('Для создания события необходимо авторизироваться')
+    else {
+      setFormErr('')
+      const author = `${user.firstname} ${user.lastname}`
+      creEvent({ eventname, place, date, time, desc, author })
+      clear()
+    }
   }
   return (
     <form className={styles.eventForm}>
@@ -73,7 +77,9 @@ function EventForm({
           />
         </Col>
       </Row>
-      <div className={styles.formErr}>{err}</div>
+      <div className={styles.formErr}>
+        {(err && user) ? err : formErr}
+      </div>
       <PrimeBtn text="Создать" onClick={handleClick} className={styles.btn} />
     </form>
   )

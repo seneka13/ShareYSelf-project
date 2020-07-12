@@ -19,10 +19,14 @@ function LogIn({
   err,
   user,
 }) {
+  const [formErr, setFormErr] = React.useState('')
   const handleClick = () => {
-    setBody({ username, password })
-    if (!username || !password) return
-    clear()
+    if (!username || !password) setFormErr('Введите логин / пароль')
+    else {
+      setFormErr('')
+      setBody({ username, password })
+      clear()
+    }
   }
 
   return (
@@ -47,7 +51,9 @@ function LogIn({
               value={password}
               onChange={(value) => changeValue('password', value)}
             />
-            <div className={styles.formErr}>{err}</div>
+            <div className={styles.formErr}>
+              {(err && !formErr) ? err : formErr}
+            </div>
             <PrimeBtn
               text="Войти"
               onClick={handleClick}

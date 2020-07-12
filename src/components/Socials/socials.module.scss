@@ -3,4 +3,8 @@
 .icon {
     width: 25px;
     color: $txt-color;
+    transition: color ease 0.4s;
+    &:hover {
+        color: $btn-color2;
+    }
 }

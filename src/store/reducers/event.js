@@ -10,6 +10,10 @@ import {
   DELETE_EVENT_LOADING,
   DELETE_EVENT_SUCCESS,
   DELETE_EVENT_FAILED,
+
+  EDIT_EVENT_LOADING,
+  EDIT_EVENT_SUCCESS,
+  EDIT_EVENT_FAILED,
 } from '../constants'
 import stateCreator from '../../services/stateCreator'
 
@@ -22,6 +26,18 @@ const initialState = {
     error: '',
   },
   get: {
+    success: false,
+    loading: false,
+    failed: false,
+    error: '',
+  },
+  delete: {
+    success: false,
+    loading: false,
+    failed: false,
+    error: '',
+  },
+  edit: {
     success: false,
     loading: false,
     failed: false,
@@ -61,6 +77,21 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         create: stateCreator('failed', action.error),
+      }
+    case EDIT_EVENT_SUCCESS:
+      return {
+        ...state,
+        edit: stateCreator('success'),
+      }
+    case EDIT_EVENT_LOADING:
+      return {
+        ...state,
+        edit: stateCreator('loading'),
+      }
+    case EDIT_EVENT_FAILED:
+      return {
+        ...state,
+        edit: stateCreator('failed', action.error),
       }
     case DELETE_EVENT_SUCCESS:
       return {

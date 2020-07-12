@@ -6,8 +6,7 @@ function Nav() {
   const navItems = [
     { id: 0, to: '/', text: 'Главная' },
     { id: 1, to: '/event', text: 'События' },
-    { id: 2, to: '/articles', text: 'Статьи' },
-    { id: 3, to: '/about', text: 'О нас' },
+    { id: 2, to: '/about', text: 'О нас' },
   ]
 
   return (

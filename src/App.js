@@ -8,6 +8,7 @@ import SignUp from './pages/SignUp'
 import LogIn from './pages/LogIn'
 import EventPage from './pages/EventPage'
 import EventInfo from './pages/EventPage/EventInfo'
+import AboutUs from './pages/AboutUs'
 
 function App() {
   const dispatch = useDispatch()
@@ -25,14 +26,9 @@ function App() {
         <Route path="/" component={HomePage} exact />
         <Route path="/event" component={EventPage} exact />
         <Route path="/event/:eventId" component={EventInfo} exact />
-        {/* <Route path="/resume" component={Articles} exact />
-        <Route path="/contact" component={Video} exact />
-        <Route path="/portfolio" component={Image} exact /> */}
+        <Route path="/about" component={AboutUs} exact />
         <Route path="/signup" component={SignUp} exact />
         <Route path="/login" component={LogIn} exact />
-
-        {/* <Route path="/portfolio/contact-list" component={ContactList} exact />
-        <Route path="/event/:eventId" component={eventInfo} exact /> */}
       </Switch>
     </BrowserRouter>
   )

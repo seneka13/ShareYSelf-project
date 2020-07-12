@@ -47,7 +47,7 @@ export const loginAction = (body) => (dispatch) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
   })
-    .then((response) => checkResponse(response, 'Ошибка пароля/логина'))
+    .then((response) => checkResponse(response, 'Ошибка логина / пароля'))
     .then(({ user }) => {
       window.localStorage.setItem('token', user.token)
       dispatch({ type: LOGIN_SUCCESS, user: user.data })

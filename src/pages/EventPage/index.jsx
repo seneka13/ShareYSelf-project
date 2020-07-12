@@ -23,15 +23,15 @@ function EventPage() {
     <PageWrapper>
       <div className={styles.eventPageBg}>
         <Container>
-          <Row className={styles.eventPage}>
+          <Row>
             {event.map((item) => {
-              const { id, eventname, location, date, time, desc, author } = item.data
+              const { id, eventname, place, date, time, desc, author } = item.data
               return (
                 <EventCard
                   key={id}
                   id={id}
                   eventname={eventname}
-                  location={location}
+                  place={place}
                   date={date}
                   time={time}
                   desc={desc}

@@ -9,19 +9,16 @@ import { changeField, clearFields, signupAction } from '../../store/actions'
 import PrimeBtn from '../../components/PrimeBtn'
 import styles from './signup.module.scss'
 
-function SignUp({
-  username,
-  password,
-  firstname,
-  lastname,
-  changeValue,
-  creAccount,
-  clear,
-  err,
-  user }) {
+function SignUp({ username, password, firstname, lastname,
+  changeValue, creAccount, clear, err, user }) {
+  const [formErr, setFormErr] = React.useState('')
   const handleClick = () => {
-    creAccount({ username, password, firstname, lastname })
-    clear()
+    if (!username || !lastname || !firstname || !password) setFormErr('Заполните форму')
+    else {
+      setFormErr('')
+      creAccount({ username, password, firstname, lastname })
+      clear()
+    }
   }
 
   return (
@@ -62,7 +59,9 @@ function SignUp({
               name="signUp"
               onChange={(value) => changeValue('password', value)}
             />
-            <div className={styles.formErr}>{err}</div>
+            <div className={styles.formErr}>
+              {(err && !formErr) ? err : formErr}
+            </div>
             <PrimeBtn
               text="Зарегестрироваться"
               onClick={handleClick}

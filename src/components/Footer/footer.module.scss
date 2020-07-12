@@ -1,6 +1,14 @@
 @import '../../styles/vars.scss';
 
 .footer {
-    height: 150px;
-    background: $btn-color;
+    height: 100px;
+    background: $line-color;
+    padding: 30px 0;
+}
+
+.footerContent {
+    display: flex;
+    justify-content: space-between;
+    color: $txt-color;
+    font-weight: lighter;
 }

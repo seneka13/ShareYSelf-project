@@ -1,11 +1,11 @@
 import React from 'react'
 import { string, func, number, oneOfType } from 'prop-types'
 import { connect } from 'react-redux'
-import PrimeBtn from '../PrimeBtn'
-import PrimeInput from '../PrimeInput'
-import PrimeText from '../PrimeText'
+import PrimeBtn from '../../../components/PrimeBtn'
+import PrimeInput from '../../../components/PrimeInput'
+import PrimeText from '../../../components/PrimeText'
 import styles from './modal.module.scss'
-import { changeField, clearFields, editEvent } from '../../store/actions'
+import { changeField, clearFields, editEvent } from '../../../store/actions'
 
 function EditModalForm({
   eventname,
@@ -14,7 +14,10 @@ function EditModalForm({
   time,
   desc,
   err,
+  id,
+  author,
   changeValue,
+  edEvent,
 }) {
   const [show, setShow] = React.useState(false)
   const isVisible = show ? styles.isShow : styles.notShow
@@ -33,6 +36,11 @@ function EditModalForm({
       document.removeEventListener('click', handleClick)
     }
   }, [show])
+
+  const handleEdit = () => {
+    const body = { eventname, place, date, time, desc, author }
+    edEvent(id, body)
+  }
 
   return (
     <>
@@ -77,7 +85,7 @@ function EditModalForm({
             onChange={(value) => changeValue('desc', value)}
           />
           <div className={styles.formErr}>{err}</div>
-          <PrimeBtn className={styles.editBtn} text="Отправить" />
+          <PrimeBtn className={styles.editBtn} text="Отправить" onClick={handleEdit} />
         </div>
       </div>
     </>
@@ -90,6 +98,9 @@ EditModalForm.propTypes = {
   date: oneOfType([string.isRequired, number.isRequired]),
   time: oneOfType([string.isRequired, number.isRequired]),
   desc: oneOfType([string.isRequired, number.isRequired]),
+  id: oneOfType([string.isRequired, number.isRequired]),
+  author: oneOfType([string.isRequired, number.isRequired]),
+  edEvent: func,
   err: string,
   changeValue: func,
 }

@@ -4,7 +4,8 @@
     text-align: center;
     padding: 30px 20px;
     background: $light-color;
-    border-radius: 5px;
+    border-radius: 2px;
+    max-width: auto;
 
     h1 {
         margin-bottom: 30px;
@@ -18,15 +19,9 @@
         color: $txt-color3;
     }
 
-    button {
-        margin-top: 0px;
-        width: 300px;
-        font-size: 20px;
-    }
-
     .formErr {
         color: $error-color;
-        height: 30px;
+        min-height: 40px;
         font-size: 15px;
         display: flex;
         align-items: center;

@@ -1,0 +1,33 @@
+@import '../../styles/vars.scss';
+
+.aboutPage {
+    background:  url('../../img/aboutBg.jpg') center /cover;
+    min-height: 100vh;
+    padding-top: 150px;
+    padding-bottom: 50px;
+}
+
+.aboutInfo {
+    width: 100%;
+    background-color: $side-color;
+    text-align: center;
+    color: $txt-color;
+    padding: 40px 50px;
+    border-radius: 5px;
+    
+
+    .title {
+        font-weight: normal;
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+
+    .desc {
+        text-align: justify;
+        font-weight: lighter;
+        margin-bottom: 15px;
+        line-height: 30px;
+        font-size: 17px;
+    }
+
+}

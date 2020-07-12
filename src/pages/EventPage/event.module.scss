@@ -6,18 +6,34 @@
     background: linear-gradient(70deg, rgba(131, 57, 57, 0) 15%, #201616ad 85%),
         linear-gradient(220deg, rgba(17, 17, 17, 0) 20%, #2c2c25a8 80%), url('../../img/eBg.jpg') center /cover;
     min-height: 100vh;
-}
-
-.eventPage {
     padding-top: 140px;
     text-align: center;
+
 }
+
 
 .eventInfo {
     background: linear-gradient(70deg, rgba(131, 57, 57, 0) 15%, #201616ad 85%),
         linear-gradient(220deg, rgba(17, 17, 17, 0) 20%, #2c2c25a8 80%), url('../../img/eBg.jpg') center /cover;
     min-height: 100vh;
     color: $txt-color;
+    padding-top: 140px;
+
+    .eventInfoContent {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        grid-template-areas: 
+        'title title'
+        'place desc'
+        'date desc'
+        'time desc'
+        'author btns';
+        
+        .title {
+            grid-area: title;
+        }
+    }
 }
 
 .eventCard {
@@ -63,7 +79,7 @@
     font-weight: lighter;
 }
 
-.delBtn{
+.delBtn {
     background: $error-color;
     text-align: center;
     font-weight: lighter;
@@ -72,6 +88,7 @@
     width: 150px;
     margin-left: 20px;
     transition: background-color ease 0.5s;
+
     &:hover {
         background: $btn-color2;
     }

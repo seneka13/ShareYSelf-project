@@ -6,7 +6,8 @@ import styles from './footer.module.scss'
 function Footer() {
   return (
     <footer className={styles.footer}>
-      <Container className="pt-5">
+      <Container className={styles.footerContent}>
+        <div>&copy;2020 It Academy. <br /> Все права защищены</div>
         <Socials />
       </Container>
     </footer>
