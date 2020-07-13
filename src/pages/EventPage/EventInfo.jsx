@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Container } from 'react-bootstrap'
+import { Container, Col, Row } from 'react-bootstrap'
 import { string, number, object, oneOfType } from 'prop-types'
 import PrimeBtn from '../../components/PrimeBtn'
 import { deleteEvent } from '../../store/actions'
@@ -27,14 +27,15 @@ function EventInfo({ location, history }) {
     <PageWrapper>
       <div className={styles.eventInfo}>
         <Container>
-          <div className={styles.eventInfoContent}>
-            <h3 className={styles.eventname}>{eventname}</h3>
-            <div className={styles.place}>Место проведения: {place}</div>
-            <div className={styles.date}>Дата события: {new Date(date).toLocaleDateString()} г.</div>
-            <div className={styles.time}>Время начала: {time} ч.</div>
-            <p className={styles.desc}>Событие: <br /> {desc}</p>
-            <address className={styles.author}>Автор: {author}</address>
-            {(user && (`${user.firstname} ${user.lastname}`) === author)
+          <h2 className={styles.eventname}>{eventname}</h2>
+          <Row className="pb-5">
+            <Col xs={12} md={4} lg={4} className="pb-3">
+              <div className={styles.extraInfo}>
+                <div className={styles.place}>Место проведения: {place}</div>
+                <div className={styles.date}>Дата события: {new Date(date).toLocaleDateString()} г.</div>
+                <div className={styles.time}>Время начала: {time} ч.</div>
+                <address className={styles.author}>Автор: {author}</address>
+                {(user && (`${user.firstname} ${user.lastname}`) === author)
           && (
           <div className={styles.controlBtns}>
             <EditModalForm
@@ -44,7 +45,12 @@ function EventInfo({ location, history }) {
             <PrimeBtn className={styles.delBtn} text="Удалить событие" onClick={handleDelete} />
           </div>
           ) }
-          </div>
+              </div>
+            </Col>
+            <Col xs={12} md={8} lg={8}>
+              <p className={styles.desc}>{desc}</p>
+            </Col>
+          </Row>
         </Container>
       </div>
     </PageWrapper>

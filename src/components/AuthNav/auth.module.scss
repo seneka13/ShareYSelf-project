@@ -20,6 +20,9 @@
 
 .logOut {
     font-weight: lighter;
+    &:hover {
+        color: $txt-color2;
+    }
 }
 
 

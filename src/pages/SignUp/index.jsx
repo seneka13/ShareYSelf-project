@@ -13,7 +13,7 @@ function SignUp({ username, password, firstname, lastname,
   changeValue, creAccount, clear, err, user }) {
   const [formErr, setFormErr] = React.useState('')
   const handleClick = () => {
-    if (!username || !lastname || !firstname || !password) setFormErr('Заполните форму')
+    if (!username || !lastname || !firstname || !password) setFormErr('Заполните все поля')
     else {
       setFormErr('')
       creAccount({ username, password, firstname, lastname })
