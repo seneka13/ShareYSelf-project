@@ -9,17 +9,7 @@ import Logo from '../Logo'
 import { changeField, clearFields, createEvent } from '../../store/actions'
 import styles from './event.module.scss'
 
-function EventForm({
-  eventname,
-  place,
-  date,
-  time,
-  desc,
-  err,
-  changeValue,
-  creEvent,
-  clear,
-  user,
+function EventForm({ eventname, place, date, time, desc, err, changeValue, creEvent, clear, user,
 }) {
   const [formErr, setFormErr] = React.useState('')
   const handleClick = () => {

@@ -2,12 +2,14 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import EventForm from '../../components/EventForm'
 import styles from './home.module.scss'
+import Alert from '../../components/Alert'
 
 function Block3() {
   return (
     <div className={styles.homeBg2}>
       <Container className="pt-5 pb-5">
         <EventForm />
+        <Alert />
       </Container>
     </div>
   )

@@ -22,7 +22,7 @@ function AuthOn() {
   return (
     <>
       <li className={styles.userName}>
-        <NavLink to="/" exact>
+        <NavLink to="/user" exact>
           <ProfileIcon className={styles.icon} />{user && user.firstname} {user && user.lastname}
         </NavLink>
       </li>

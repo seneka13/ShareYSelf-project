@@ -9,6 +9,7 @@ import LogIn from './pages/LogIn'
 import EventPage from './pages/EventPage'
 import EventInfo from './pages/EventPage/EventInfo'
 import AboutUs from './pages/AboutUs'
+import UserPage from './pages/UserPage'
 
 function App() {
   const dispatch = useDispatch()
@@ -29,6 +30,7 @@ function App() {
         <Route path="/about" component={AboutUs} exact />
         <Route path="/signup" component={SignUp} exact />
         <Route path="/login" component={LogIn} exact />
+        <Route path="/user" component={UserPage} exact />
       </Switch>
     </BrowserRouter>
   )

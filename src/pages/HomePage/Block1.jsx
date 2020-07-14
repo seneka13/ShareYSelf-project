@@ -1,6 +1,5 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
-import PrimeBtn from '../../components/PrimeBtn'
 import styles from './home.module.scss'
 
 function Block1() {

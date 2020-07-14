@@ -1,7 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styles from './about.module.scss'
-import PrimeBtn from '../../components/PrimeBtn'
 
 function AboutInfo() {
   return (

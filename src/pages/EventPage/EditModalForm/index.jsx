@@ -1,24 +1,15 @@
 import React from 'react'
 import { string, func, number, oneOfType } from 'prop-types'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import PrimeBtn from '../../../components/PrimeBtn'
 import PrimeInput from '../../../components/PrimeInput'
 import PrimeText from '../../../components/PrimeText'
 import styles from './modal.module.scss'
 import { changeField, clearFields, editEvent } from '../../../store/actions'
 
-function EditModalForm({
-  eventname,
-  place,
-  date,
-  time,
-  desc,
-  err,
-  id,
-  author,
-  changeValue,
-  edEvent,
-}) {
+function EditModalForm({ eventname, place, date, time, desc, err, id, author, changeValue, edEvent,
+  defEvent, defPlace, defDate, defTime, defDesc }) {
   const [show, setShow] = React.useState(false)
   const isVisible = show ? styles.isShow : styles.notShow
   const handleShow = () => setShow(!show)
@@ -37,6 +28,14 @@ function EditModalForm({
     }
   }, [show])
 
+  React.useEffect(() => {
+    changeValue('eventname', defEvent)
+    changeValue('place', defPlace)
+    changeValue('date', defDate)
+    changeValue('time', defTime)
+    changeValue('desc', defDesc)
+  }, [changeValue, defDate, defDesc, defEvent, defPlace, defTime])
+
   const handleEdit = () => {
     const body = { eventname, place, date, time, desc, author }
     edEvent(id, body)
@@ -52,7 +51,6 @@ function EditModalForm({
             type="text"
             placeholder="Название события"
             name="eventForm"
-            defaultValue="dds"
             value={eventname}
             onChange={(value) => changeValue('eventname', value)}
           />
@@ -101,6 +99,11 @@ EditModalForm.propTypes = {
   desc: oneOfType([string.isRequired, number.isRequired]),
   id: oneOfType([string.isRequired, number.isRequired]),
   author: oneOfType([string.isRequired, number.isRequired]),
+  defEvent: oneOfType([string.isRequired, number.isRequired]),
+  defPlace: oneOfType([string.isRequired, number.isRequired]),
+  defDate: oneOfType([string.isRequired, number.isRequired]),
+  defTime: oneOfType([string.isRequired, number.isRequired]),
+  defDesc: oneOfType([string.isRequired, number.isRequired]),
   edEvent: func,
   err: string,
   changeValue: func,

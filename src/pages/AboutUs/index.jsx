@@ -4,6 +4,7 @@ import PageWrapper from '../../components/PageWrapper'
 import AboutInfo from './AboutInfo'
 import styles from './about.module.scss'
 
+
 function AboutUs() {
   return (
     <PageWrapper>

@@ -41,6 +41,11 @@ function EventInfo({ location, history }) {
             <EditModalForm
               id={id}
               author={author}
+              defEvent={eventname}
+              defPlace={place}
+              defDate={date}
+              defTime={time}
+              defDesc={desc}
             />
             <PrimeBtn className={styles.delBtn} text="Удалить событие" onClick={handleDelete} />
           </div>
