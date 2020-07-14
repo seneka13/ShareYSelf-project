@@ -9,7 +9,9 @@ function Block1() {
       <div className={styles.homeContent}>
         <h1 className={styles.title}>Ваши мысли</h1>
         <p className={styles.subtitle}>- то чем стоит делиться</p>
-        <PrimeBtn text="Подробнее" onClick={() => console.log('dsd')} className={styles.btn} />
+        <a className={styles.scroll} href="#scroll">
+          Подробнее
+        </a>
       </div>
     </Container>
   )

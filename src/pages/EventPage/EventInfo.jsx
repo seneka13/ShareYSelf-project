@@ -31,7 +31,7 @@ function EventInfo({ location, history }) {
           <Row className="pb-5">
             <Col xs={12} md={4} lg={4} className="pb-3">
               <div className={styles.extraInfo}>
-                <div className={styles.place}>Место проведения: {place}</div>
+                <div className={styles.place}>{place}</div>
                 <div className={styles.date}>Дата события: {new Date(date).toLocaleDateString()} г.</div>
                 <div className={styles.time}>Время начала: {time} ч.</div>
                 <address className={styles.author}>Автор: {author}</address>

@@ -38,11 +38,11 @@ function EventCard({ id, eventname, place, date, time, desc, author }) {
             Дата проведения: {new Date(date).toLocaleDateString()}
           </div>
           <div className={styles.eventDate}>Время проведения: {time}</div>
-          {timeValue > timeNow && (
-          <div>Времени до начала: {daysTimer}д. {hoursTimer}ч. {minutesTimer}м. {secondsTimer}с.
-          </div>
-          )}
-          {timeValue < timeNow && (<div className={styles.eventPast}>Событие прошло</div>)}
+          {timeValue > timeNow
+            ? (
+              <div className={styles.eventTimer}>До начала: {daysTimer}д. {hoursTimer}ч. {minutesTimer}м. {secondsTimer}с.
+              </div>
+            ) : <div className={styles.eventPast}>Событие прошло</div>}
           <div className={styles.eventAuthor}>{author}</div>
         </div>
       </NavLink>

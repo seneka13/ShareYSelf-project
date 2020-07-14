@@ -39,8 +39,14 @@
 
         &:hover {
             background: $light-color;
-            color:$txt-color3;
+            color: $txt-color3;
         }
     }
 
+}
+
+@media(max-width: 1024px) {
+    .aboutInfo {
+        padding: 30px 20px;
+    }
 }

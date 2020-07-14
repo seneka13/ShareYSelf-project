@@ -52,6 +52,7 @@ function EditModalForm({
             type="text"
             placeholder="Название события"
             name="eventForm"
+            defaultValue="dds"
             value={eventname}
             onChange={(value) => changeValue('eventname', value)}
           />

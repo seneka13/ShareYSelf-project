@@ -6,13 +6,13 @@ import styles from './home.module.scss'
 
 function Block2() {
   return (
-    <div className={styles.homeBg2}>
+    <div id="scroll" className={styles.homeBg2}>
       <Container className="pt-5">
         <Row className={styles.homeContent}>
           <Col xs={12} md={6} className={styles.homeInfo}>
             <h3>Создавайте события у нас</h3>
             <p>ShareYSelf - сервис для создания событий.
-              Для того чтобы начать пользоваться нашим сервисом вам необходимо пройти 
+              Для того чтобы начать пользоваться нашим сервисом вам необходимо пройти
               <NavLink to="/signup" exact> регистрацию</NavLink>
             </p>
           </Col>
