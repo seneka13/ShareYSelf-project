@@ -1,7 +1,6 @@
 import React from 'react'
-import { string, func, number, oneOfType } from 'prop-types'
+import { string, func, number, oneOfType, object } from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import PrimeBtn from '../../../components/PrimeBtn'
 import PrimeInput from '../../../components/PrimeInput'
 import PrimeText from '../../../components/PrimeText'
@@ -9,7 +8,7 @@ import styles from './modal.module.scss'
 import { changeField, clearFields, editEvent } from '../../../store/actions'
 
 function EditModalForm({ eventname, place, date, time, desc, err, id, author, changeValue, edEvent,
-  defEvent, defPlace, defDate, defTime, defDesc }) {
+  defEvent, defPlace, defDate, defTime, defDesc, history }) {
   const [show, setShow] = React.useState(false)
   const isVisible = show ? styles.isShow : styles.notShow
   const handleShow = () => setShow(!show)
@@ -39,6 +38,7 @@ function EditModalForm({ eventname, place, date, time, desc, err, id, author, ch
   const handleEdit = () => {
     const body = { eventname, place, date, time, desc, author }
     edEvent(id, body)
+    history.goBack()
   }
 
   return (
@@ -107,6 +107,7 @@ EditModalForm.propTypes = {
   edEvent: func,
   err: string,
   changeValue: func,
+  history: object,
 }
 
 const mapStateToProps = (state) => ({

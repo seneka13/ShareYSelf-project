@@ -8,11 +8,9 @@ import styles from './home.module.scss'
 function HomePage() {
   return (
     <PageWrapper>
-      <div className={styles.homeBg}>
-        <Block1 />
-        <Block2 />
-        <Block3 />
-      </div>
+      <Block1 />
+      <Block2 />
+      <Block3 />
     </PageWrapper>
   )
 }

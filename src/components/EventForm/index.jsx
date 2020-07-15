@@ -1,7 +1,8 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { string, func, number, object, oneOfType } from 'prop-types'
+import { string, func, number, object, oneOfType, bool } from 'prop-types'
+import { Redirect } from 'react-router-dom'
 import PrimeInput from '../PrimeInput'
 import PrimeBtn from '../PrimeBtn'
 import PrimeText from '../PrimeText'
@@ -9,7 +10,8 @@ import Logo from '../Logo'
 import { changeField, clearFields, createEvent } from '../../store/actions'
 import styles from './event.module.scss'
 
-function EventForm({ eventname, place, date, time, desc, err, changeValue, creEvent, clear, user,
+function EventForm({ eventname, place, date, time, desc, err, changeValue, creEvent, clear,
+  user, success,
 }) {
   const [formErr, setFormErr] = React.useState('')
   const handleClick = () => {
@@ -21,6 +23,7 @@ function EventForm({ eventname, place, date, time, desc, err, changeValue, creEv
       clear()
     }
   }
+
   return (
     <form className={styles.eventForm}>
       <Logo />
@@ -70,6 +73,7 @@ function EventForm({ eventname, place, date, time, desc, err, changeValue, creEv
       <div className={styles.formErr}>
         {(err && user) ? err : formErr}
       </div>
+      {success && <Redirect to="/event" />}
       <PrimeBtn text="Создать" onClick={handleClick} className={styles.btn} />
     </form>
   )
@@ -86,6 +90,7 @@ EventForm.propTypes = {
   creEvent: func,
   changeValue: func,
   user: object,
+  success: bool,
 }
 
 const mapStateToProps = (state) => ({
@@ -95,6 +100,7 @@ const mapStateToProps = (state) => ({
   time: state.fields.event.time,
   desc: state.fields.event.desc,
   err: state.event.create.error,
+  success: state.event.create.success,
   user: state.auth.user,
 })
 

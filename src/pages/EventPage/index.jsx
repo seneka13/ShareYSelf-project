@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Container, Row } from 'react-bootstrap'
-import { getEvents } from '../../store/actions'
+import { getEvents, succesReset } from '../../store/actions'
 import PageWrapper from '../../components/PageWrapper'
 import EventCard from './EventCard'
 import styles from './event.module.scss'
@@ -10,6 +10,7 @@ function EventPage() {
   const { event, error } = useSelector((state) => ({
     event: state.event.events,
     error: state.event.get.error,
+    success: state.event.create.success,
   }))
 
   const dispatch = useDispatch()
@@ -17,6 +18,8 @@ function EventPage() {
   React.useEffect(() => {
     const getEventList = () => dispatch(getEvents())
     getEventList()
+    const resetSuccess = () => dispatch(succesReset())
+    resetSuccess()
   }, [dispatch])
 
   return (

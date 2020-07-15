@@ -46,6 +46,7 @@ function EventInfo({ location, history }) {
               defDate={date}
               defTime={time}
               defDesc={desc}
+              history={history}
             />
             <PrimeBtn className={styles.delBtn} text="Удалить событие" onClick={handleDelete} />
           </div>

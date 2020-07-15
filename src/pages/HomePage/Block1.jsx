@@ -4,15 +4,17 @@ import styles from './home.module.scss'
 
 function Block1() {
   return (
-    <Container>
-      <div className={styles.homeContent}>
-        <h1 className={styles.title}>Ваши мысли</h1>
-        <p className={styles.subtitle}>- то чем стоит делиться</p>
-        <a className={styles.scroll} href="#scroll">
-          Подробнее
-        </a>
-      </div>
-    </Container>
+    <div className={styles.homeBg}>
+      <Container>
+        <div className={styles.homeContent}>
+          <h1 className={styles.title}>Ваши мысли</h1>
+          <p className={styles.subtitle}>- то чем стоит делиться</p>
+          <a className={styles.scroll} href="#scroll">
+            Подробнее
+          </a>
+        </div>
+      </Container>
+    </div>
   )
 }
 

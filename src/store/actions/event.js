@@ -6,6 +6,7 @@ import {
   CREATE_EVENT_LOADING,
   CREATE_EVENT_SUCCESS,
   CREATE_EVENT_FAILED,
+  CREATE_EVENT_SUCCESS_RESET,
 
   DELETE_EVENT_LOADING,
   DELETE_EVENT_SUCCESS,
@@ -85,3 +86,7 @@ export const editEvent = (id, body) => (dispatch) => {
       dispatch({ type: EDIT_EVENT_FAILED, error: errorHandler(error) })
     })
 }
+
+export const succesReset = () => ({
+  type: CREATE_EVENT_SUCCESS_RESET,
+})
