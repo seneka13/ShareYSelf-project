@@ -6,5 +6,94 @@
         linear-gradient(220deg, rgba(17, 17, 17, 0) 20%, #2c2c255e 80%),
         url('../../img/userBg.jpg') center / cover;
     min-height: 100vh;
-    padding-top: 150px;
+    padding-top: 120px;
+    text-align: center;
+
+    h1 {
+        color: $txt-color;
+        font-size: 45px;
+        font-weight: normal;
+    }
+
+    h3 {
+        color: $txt-color3;
+        font-size: 25px;
+        font-weight: normal;
+        margin-bottom: 20px;
+    }
+}
+
+.profIcon {
+    color: $txt-color;
+}
+
+.userArea {
+    background: $side-color;
+    padding: 50px;
+}
+
+.avatarArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .avatarImg {
+        width: 200px;
+        border-radius: 50%;
+    }
+
+    .avatarUpload {
+        margin-top: 20px;
+        width: 120px;
+        height: 40px;
+        border-radius: 10px;
+        color: $txt-color3;
+        background: $txt-color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color ease 0.5s;
+
+        &:hover {
+            cursor: pointer;
+            background: $btn-color2;
+            color: $txt-color;
+        }
+
+        input {
+            display: none;
+        }
+    }
+}
+
+.userInfo {
+    text-align: justify;
+    color: $txt-color;
+    font-size: 25px;
+
+
+    .userBtns {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .userEditBtn {
+            margin-top: 15px;
+            width: 200px;
+            height: 45px;
+            background: $btn-color;
+            border-radius: 10px;
+            color: $txt-color;
+            font-weight: lighter;
+            font-size: 15px;
+            transition: background-color ease 0.5s;
+
+            &:hover {
+                background: $btn-color2;
+                color: $txt-color;
+            }
+        }
+    }
+
 }

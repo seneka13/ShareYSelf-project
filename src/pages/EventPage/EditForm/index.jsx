@@ -31,7 +31,7 @@ function EditForm({ eventname, place, date, time, desc, err, id, author, changeV
   }
 
   return (
-    <Modal>
+    <Modal btnText="Редактировать" className={styles.editBtn}>
       <form className={styles.editForm}>
         <PrimeInput
           id="eventname"
