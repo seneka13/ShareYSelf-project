@@ -4,7 +4,7 @@ import { Container, Col, Row } from 'react-bootstrap'
 import { string, number, object, oneOfType } from 'prop-types'
 import PrimeBtn from '../../components/PrimeBtn'
 import { deleteEvent } from '../../store/actions'
-import EditModalForm from './EditModalForm'
+import EditForm from './EditForm'
 
 import PageWrapper from '../../components/PageWrapper'
 import styles from './event.module.scss'
@@ -38,7 +38,7 @@ function EventInfo({ location, history }) {
                 {(user && (`${user.firstname} ${user.lastname}`) === author)
           && (
           <div className={styles.controlBtns}>
-            <EditModalForm
+            <EditForm
               id={id}
               author={author}
               defEvent={eventname}
@@ -46,7 +46,6 @@ function EventInfo({ location, history }) {
               defDate={date}
               defTime={time}
               defDesc={desc}
-              history={history}
             />
             <PrimeBtn className={styles.delBtn} text="Удалить событие" onClick={handleDelete} />
           </div>

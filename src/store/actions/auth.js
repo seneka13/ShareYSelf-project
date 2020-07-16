@@ -3,6 +3,10 @@ import {
   USER_DATA_SUCCESS,
   USER_DATA_FAILED,
 
+  USER_DATA_CHANGE_LOADING,
+  USER_DATA_CHANGE_SUCCESS,
+  USER_DATA_CHANGE_FAILED,
+
   LOGIN_LOADING,
   LOGIN_SUCCESS,
   LOGIN_FAILED,
@@ -25,7 +29,7 @@ const errorHandler = (error) => (error.response ? error.response.data : error.me
 
 export const getData = () => (dispatch) => {
   dispatch({ type: USER_DATA_LOADING })
-  fetch(`${endpoint}/data`, {
+  fetch(`${endpoint}/get-user`, {
     method: 'GET',
     headers: {
       'X-Auth': localStorage.getItem('token'),
@@ -71,6 +75,24 @@ export const signupAction = (body) => (dispatch) => {
     })
     .catch((error) => {
       dispatch({ type: SIGNUP_FAILED, error: errorHandler(error) })
+    })
+}
+
+export const editUser = (id, body) => (dispatch) => {
+  dispatch({ type: USER_DATA_CHANGE_LOADING })
+  fetch(`${endpoint}/edit-user/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  })
+    .then((response) => checkResponse(response, 'Изменение невозможно'))
+    .then(() => {
+      dispatch({ type: USER_DATA_CHANGE_SUCCESS })
+    })
+    .catch((error) => {
+      dispatch({ type: USER_DATA_CHANGE_FAILED, error: errorHandler(error) })
     })
 }
 

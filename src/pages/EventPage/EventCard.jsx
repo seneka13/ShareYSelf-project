@@ -41,9 +41,10 @@ function EventCard({ id, eventname, place, date, time, desc, author }) {
           {timeValue > timeNow
             ? (
               <div className={styles.eventTimer}>
-                До начала: {daysTimer}д.
-                {hoursTimer}ч.
-                {minutesTimer}м.
+                До начала: &nbsp;
+                {daysTimer}д. &nbsp;
+                {hoursTimer}ч.&nbsp;
+                {minutesTimer}м.&nbsp;
                 {secondsTimer}с.
               </div>
             ) : <div className={styles.eventPast}>Событие прошло</div>}

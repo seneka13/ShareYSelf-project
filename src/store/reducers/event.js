@@ -6,7 +6,7 @@ import {
   CREATE_EVENT_LOADING,
   CREATE_EVENT_SUCCESS,
   CREATE_EVENT_FAILED,
-  CREATE_EVENT_SUCCESS_RESET,
+  EVENT_SUCCESS_RESET,
 
   DELETE_EVENT_LOADING,
   DELETE_EVENT_SUCCESS,
@@ -79,10 +79,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         create: stateCreator('failed', action.error),
       }
-    case CREATE_EVENT_SUCCESS_RESET:
+    case EVENT_SUCCESS_RESET:
       return {
         ...state,
         create: initialState,
+        edit: initialState,
       }
     case EDIT_EVENT_SUCCESS:
       return {

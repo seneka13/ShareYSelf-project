@@ -10,14 +10,7 @@ import HelpLink from '../../components/HelpLink'
 import { loginAction, changeField, clearFields } from '../../store/actions'
 import styles from './login.module.scss'
 
-function LogIn({
-  username,
-  password,
-  changeValue,
-  setBody,
-  clear,
-  err,
-  user,
+function LogIn({ username, password, changeValue, setBody, clear, err, user,
 }) {
   const [formErr, setFormErr] = React.useState('')
   const handleClick = () => {
