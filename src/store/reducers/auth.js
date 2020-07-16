@@ -41,11 +41,12 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
+  console.log(action)
   switch (action.type) {
     case USER_DATA_SUCCESS:
       return {
         ...state,
-        user: action.data,
+        user: action.user,
         data: stateCreator('success'),
       }
     case USER_DATA_LOADING:
@@ -61,7 +62,7 @@ const reducer = (state = initialState, action) => {
     case USER_DATA_CHANGE_LOADING:
       return {
         ...state,
-        user: action.data,
+        user: action.user,
         data: stateCreator('success'),
       }
     case USER_DATA_CHANGE_SUCCESS:

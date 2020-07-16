@@ -36,8 +36,8 @@ export const getData = () => (dispatch) => {
     },
   })
     .then((response) => checkResponse(response, 'Ошибка загрузки'))
-    .then(({ data }) => {
-      dispatch({ type: USER_DATA_SUCCESS, data })
+    .then((user) => {
+      dispatch({ type: USER_DATA_SUCCESS, user })
     })
     .catch((error) => {
       dispatch({ type: USER_DATA_FAILED, error: errorHandler(error) })
@@ -54,7 +54,7 @@ export const loginAction = (body) => (dispatch) => {
     .then((response) => checkResponse(response, 'Ошибка логина / пароля'))
     .then(({ user }) => {
       window.localStorage.setItem('token', user.token)
-      dispatch({ type: LOGIN_SUCCESS, user: user.data })
+      dispatch({ type: LOGIN_SUCCESS, user })
     })
     .catch((error) => {
       dispatch({ type: LOGIN_FAILED, error: errorHandler(error) })
@@ -71,7 +71,7 @@ export const signupAction = (body) => (dispatch) => {
     .then((response) => checkResponse(response, 'Такой пользователь уже существует'))
     .then(({ user }) => {
       window.localStorage.setItem('token', user.token)
-      dispatch({ type: SIGNUP_SUCCESS, user: user.data })
+      dispatch({ type: SIGNUP_SUCCESS, user })
     })
     .catch((error) => {
       dispatch({ type: SIGNUP_FAILED, error: errorHandler(error) })

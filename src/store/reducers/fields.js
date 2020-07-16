@@ -37,7 +37,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         login: initialState.login,
-        signin: initialState.signin,
+        signup: initialState.signup,
         event: initialState.event,
       }
     default:

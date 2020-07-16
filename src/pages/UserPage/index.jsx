@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Col, Row } from 'react-bootstrap'
+import { Redirect } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import PageWrapper from '../../components/PageWrapper'
 import styles from './user.module.scss'
@@ -26,6 +27,7 @@ function UserPage() {
             </Col>
           </Row>
         </Container>
+        {!user && <Redirect to="/login" />}
       </div>
     </PageWrapper>
   )

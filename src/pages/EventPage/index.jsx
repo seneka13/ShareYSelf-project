@@ -28,7 +28,7 @@ function EventPage() {
         <Container>
           <Row>
             {event.map((item) => {
-              const { id, eventname, place, date, time, desc, author } = item.data
+              const { id, eventname, place, date, time, desc, author } = item
               return (
                 <EventCard
                   key={id}
