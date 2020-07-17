@@ -3,9 +3,9 @@ import {
   USER_DATA_SUCCESS,
   USER_DATA_FAILED,
 
-  USER_DATA_CHANGE_LOADING,
-  USER_DATA_CHANGE_SUCCESS,
-  USER_DATA_CHANGE_FAILED,
+  USER_PASSWORD_CHANGE_LOADING,
+  USER_PASSWORD_CHANGE_SUCCESS,
+  USER_PASSWORD_CHANGE_FAILED,
 
   LOGIN_LOADING,
   LOGIN_SUCCESS,
@@ -38,6 +38,12 @@ const initialState = {
     failed: false,
     error: '',
   },
+  edit: {
+    success: false,
+    loading: false,
+    failed: false,
+    error: '',
+  },
 }
 
 const reducer = (state = initialState, action) => {
@@ -58,21 +64,20 @@ const reducer = (state = initialState, action) => {
         ...state,
         data: stateCreator('failed', action.error),
       }
-    case USER_DATA_CHANGE_LOADING:
+    case USER_PASSWORD_CHANGE_LOADING:
       return {
         ...state,
-        user: action.user,
-        data: stateCreator('success'),
+        edit: stateCreator('success'),
       }
-    case USER_DATA_CHANGE_SUCCESS:
+    case USER_PASSWORD_CHANGE_SUCCESS:
       return {
         ...state,
-        data: stateCreator('loading'),
+        edit: stateCreator('loading'),
       }
-    case USER_DATA_CHANGE_FAILED:
+    case USER_PASSWORD_CHANGE_FAILED:
       return {
         ...state,
-        data: stateCreator('failed', action.error),
+        edit: stateCreator('failed', action.error),
       }
     case LOGIN_SUCCESS:
       return {

@@ -3,10 +3,6 @@ import {
   USER_DATA_SUCCESS,
   USER_DATA_FAILED,
 
-  USER_DATA_CHANGE_LOADING,
-  USER_DATA_CHANGE_SUCCESS,
-  USER_DATA_CHANGE_FAILED,
-
   USER_PASSWORD_CHANGE_LOADING,
   USER_PASSWORD_CHANGE_SUCCESS,
   USER_PASSWORD_CHANGE_FAILED,
@@ -82,27 +78,9 @@ export const signupAction = (body) => (dispatch) => {
     })
 }
 
-export const editUser = (id, body) => (dispatch) => {
-  dispatch({ type: USER_DATA_CHANGE_LOADING })
-  fetch(`${endpoint}/edit-user/${id}`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-  })
-    .then((response) => checkResponse(response, 'Изменение невозможно'))
-    .then(() => {
-      dispatch({ type: USER_DATA_CHANGE_SUCCESS })
-    })
-    .catch((error) => {
-      dispatch({ type: USER_DATA_CHANGE_FAILED, error: errorHandler(error) })
-    })
-}
-
 export const editPassword = (id, body) => (dispatch) => {
   dispatch({ type: USER_PASSWORD_CHANGE_LOADING })
-  fetch(`${endpoint}/edit-user/${id}`, {
+  fetch(`${endpoint}/edit-password/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

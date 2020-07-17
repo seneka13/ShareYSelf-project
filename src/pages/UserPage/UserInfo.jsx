@@ -2,7 +2,6 @@ import React from 'react'
 import { Col } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import UserPasswordEdit from './UserPasswordEdit'
-import UserEdit from './UserEdit'
 import styles from './user.module.scss'
 
 function UserInfo() {
@@ -16,7 +15,6 @@ function UserInfo() {
         <p>Имя: {user && user.firstname}</p>
         <p>Фамилия: {user && user.lastname}</p>
         <div className={styles.userBtns}>
-          <UserEdit />
           <UserPasswordEdit />
         </div>
       </div>

@@ -99,18 +99,17 @@ EditForm.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  eventname: state.fields.event.eventname,
-  place: state.fields.event.place,
-  date: state.fields.event.date,
-  time: state.fields.event.time,
-  desc: state.fields.event.desc,
+  eventname: state.fields.editevent.eventname,
+  place: state.fields.editevent.place,
+  date: state.fields.editevent.date,
+  time: state.fields.editevent.time,
+  desc: state.fields.editevent.desc,
   err: state.event.edit.error,
   success: state.event.edit.success,
-  user: state.auth.user,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  changeValue: (formField, value) => dispatch(changeField('event', formField, value)),
+  changeValue: (formField, value) => dispatch(changeField('editevent', formField, value)),
   edEvent: (id, body) => dispatch(editEvent(id, body)),
   clear: () => dispatch(clearFields()),
 })

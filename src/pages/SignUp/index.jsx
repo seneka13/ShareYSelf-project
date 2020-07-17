@@ -84,7 +84,7 @@ function SignUp({ username, password, firstname, lastname,
 }
 
 SignUp.propTypes = {
-  username: string.isRequired,
+  username: oneOfType([string.isRequired, number.isRequired]),
   password: oneOfType([string.isRequired, number.isRequired]),
   firstname: string,
   lastname: string,

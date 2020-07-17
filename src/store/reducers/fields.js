@@ -14,7 +14,17 @@ const initialState = {
     firstname: '',
     lastname: '',
   },
+  editpassword: {
+    password: '',
+  },
   event: {
+    eventname: '',
+    place: '',
+    date: '',
+    time: '',
+    desc: '',
+  },
+  editevent: {
     eventname: '',
     place: '',
     date: '',
@@ -39,6 +49,8 @@ const reducer = (state = initialState, action) => {
         login: initialState.login,
         signup: initialState.signup,
         event: initialState.event,
+        editevent: initialState.editevent,
+        editpassword: initialState.editpassword,
       }
     default:
       return state
