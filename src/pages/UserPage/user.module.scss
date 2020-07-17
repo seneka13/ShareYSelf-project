@@ -24,9 +24,7 @@
     }
 }
 
-.profIcon {
-    color: $txt-color;
-}
+
 
 .userArea {
     background: $side-color;
@@ -39,9 +37,29 @@
     align-items: center;
 
     .avatarImg {
-        width: 200px;
+        max-width: 210px;
+        max-height: 210px;
         border-radius: 50%;
+        box-sizing: border-box;
+        object-fit: cover;
+        border: 3px dotted $btn-color;
+
+        img {
+            width: 100%;
+            min-height: 200px;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
     }
+
+    .profIcon {
+        color: $txt-color;
+        width: 100%;
+        object-fit: cover;
+    }
+
 
     .avatarUpload {
         margin-top: 20px;

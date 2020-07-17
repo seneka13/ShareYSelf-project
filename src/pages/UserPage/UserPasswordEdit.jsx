@@ -4,16 +4,15 @@ import { connect } from 'react-redux'
 import Modal from '../../components/Modal'
 import PrimeInput from '../../components/PrimeInput'
 import PrimeBtn from '../../components/PrimeBtn'
-import { changeField, clearFields, editPassword } from '../../store/actions'
+import { changeField, clearFields, userLogOut, editPassword } from '../../store/actions'
 import styles from './user.module.scss'
 
-function UserPasswordEdit({ user, pass, edPassword, changeValue, clear, err }) {
+function UserPasswordEdit({ user, pass, edPass, changeValue, clear, logOut, err }) {
   const [formErr, setFormErr] = React.useState('')
   const [currentPass, setCurrentPass] = React.useState('')
   const [passRepeat, setPassRepeat] = React.useState('')
   const userPass = user ? user.password : null
   const userId = user ? user.id : null
-  console.log(userId)
 
   const handleEdit = () => {
     if (!pass || !passRepeat) setFormErr('Укажите новый пароль')
@@ -22,15 +21,11 @@ function UserPasswordEdit({ user, pass, edPassword, changeValue, clear, err }) {
     else if (passRepeat !== pass) setFormErr('Пароли не совпадают')
     else {
       setFormErr('')
-      edPassword(userId, pass)
+      edPass(userId, { password: pass })
+      logOut()
       clear()
     }
   }
-
-  console.log(userPass)
-  console.log(pass)
-  console.log(passRepeat)
-  console.log(currentPass)
 
   return (
     <Modal className={styles.userEditBtn} btnText="Изменить пароль">
@@ -70,10 +65,11 @@ function UserPasswordEdit({ user, pass, edPassword, changeValue, clear, err }) {
 UserPasswordEdit.propTypes = {
   pass: oneOfType([string.isRequired, number.isRequired]),
   changeValue: func,
-  edPassword: func,
-  err: string,
+  edPass: func,
+  logOut: func,
   clear: func,
   user: object,
+  err: string,
 }
 
 const mapStateToProps = (state) => ({
@@ -85,7 +81,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   changeValue: (formField, value) => dispatch(changeField('editpassword', formField, value)),
   clear: () => dispatch(clearFields()),
-  edPassword: (id, body) => dispatch(editPassword(id, body)),
+  logOut: () => dispatch(userLogOut()),
+  edPass: (id, body) => dispatch(editPassword(id, body)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserPasswordEdit)

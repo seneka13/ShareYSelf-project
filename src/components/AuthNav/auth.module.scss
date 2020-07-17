@@ -12,6 +12,15 @@
     margin-right: 5px;
 }
 
+.avatar {
+    width: 25px;
+    margin-right: 5px;
+    min-height: 25px;
+    max-height: 25px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 .userName {
     display: flex;
     align-items: center;
@@ -20,6 +29,7 @@
 
 .logOut {
     font-weight: lighter;
+
     &:hover {
         color: $txt-color2;
     }

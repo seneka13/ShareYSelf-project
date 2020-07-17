@@ -16,7 +16,6 @@ function UserPage() {
       <div className={styles.userBg}>
         <Container>
           <div className={styles.userArea}>
-            <h1>Личный кабинет</h1>
             <Row className="pt-4">
               <UserAvatar />
               <UserInfo />

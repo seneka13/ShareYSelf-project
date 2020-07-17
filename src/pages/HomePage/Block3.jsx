@@ -5,7 +5,7 @@ import styles from './home.module.scss'
 
 function Block3() {
   return (
-    <div className={styles.homeBg3}>
+    <div id="scroll2" className={styles.homeBg3}>
       <Container className="pt-5 pb-5">
         <EventForm />
       </Container>

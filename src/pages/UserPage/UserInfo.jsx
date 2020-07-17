@@ -9,7 +9,8 @@ function UserInfo() {
     user: state.auth.user,
   }))
   return (
-    <Col xs={12} md={8}>
+    <Col xs={12} md={7}>
+      <h1>Личный кабинет</h1>
       <div className={styles.userInfo}>
         <p>Логин: {user && user.username}</p>
         <p>Имя: {user && user.firstname}</p>
