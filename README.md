@@ -1,25 +1,26 @@
-ShareYSelf - это приложение для создания событий.
+# Веб приложение ShareYSelf
 
-## Available Scripts
+Данный проект создан для того чтобы люди могли делиться своими идеями.
+Проект создан с использованием библиотеки ReactJS [Create React App]
 
-1. Get the source code:
+### Для полноценной работы приложения, вам необходимо также скачать и параллельно запустить API к вышеуказанному приложению, которое вы можете найти по ссылке https://github.com/seneka13/ShareYSelf-api
 
-### `git clone` https://github.com/seneka13/ShareYSelf-project.git
+## Скопируйте проект
 
+```sh
+git clone https://github.com/seneka13/ShareYSelf-project.git
+```
 
-2. Install dependencies:
+## Для установки пакетов, перед запуском ипользуйте 
 
-### `npm install`
+```sh
+npm install
+```
 
-3. Run the app:
+## Запуск проекта
 
-### `npm start`
+```sh
+npm start
+```
 
-4. For build run:
-
-### `npm run build`
-
-5. You also need connect API from:
-
-### https://github.com/seneka13/ShareYSelf-api
-
+### Зарегестрируйтесь и попробуйте создать событие с указанием описания даты, времени, местом проведения.
