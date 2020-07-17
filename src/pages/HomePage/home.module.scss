@@ -42,8 +42,8 @@ html {
 }
 
 .homeBg3 {
-    min-height: 100vh;
-    padding-top: 100px;
+    min-height: 100%;
+    padding-top: 50px;
     background: fixed linear-gradient(70deg, rgba(131, 57, 57, 0) 15%, #20161663 85%),
         linear-gradient(220deg, rgba(17, 17, 17, 0) 20%, #2c2c255e 80%),
         url('../../img/hBg3.jpg') center / cover;
