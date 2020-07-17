@@ -5,7 +5,7 @@
     background: fixed linear-gradient(70deg, rgba(131, 57, 57, 0) 15%, #20161663 85%),
         linear-gradient(220deg, rgba(17, 17, 17, 0) 20%, #2c2c255e 80%),
         url('../../img/userBg.jpg') center / cover;
-    height: 100%;
+    min-height: 100vh;
     padding-top: 120px;
     padding-bottom: 35px;
     text-align: center;
