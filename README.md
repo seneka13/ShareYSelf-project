@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ShareYSelf - это приложение для создания событий.
 
 ## Available Scripts
 
