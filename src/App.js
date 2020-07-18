@@ -22,7 +22,7 @@ function App() {
   }, [dispatch])
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/shareyself">
       <Switch>
         <Route path="/" component={HomePage} exact />
         <Route path="/event" component={EventPage} exact />
