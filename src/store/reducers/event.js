@@ -84,6 +84,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         create: initialState,
         edit: initialState,
+        delete: initialState,
       }
     case EDIT_EVENT_SUCCESS:
       return {
