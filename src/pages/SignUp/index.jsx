@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Col } from 'react-bootstrap'
 import { NavLink, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { string, number, func, object, oneOfType } from 'prop-types'
+import { string, number, func, object, oneOfType, bool } from 'prop-types'
 import PrimeInput from '../../components/PrimeInput'
 import Logo from '../../components/Logo'
 import { changeField, clearFields, signupAction } from '../../store/actions'
@@ -11,7 +11,7 @@ import LoadSpinner from '../../components/LoadSpinner'
 import styles from './signup.module.scss'
 
 function SignUp({ username, password, firstname, lastname,
-  changeValue, creAccount, clear, err, user }) {
+  changeValue, creAccount, clear, err, loading, user }) {
   const [formErr, setFormErr] = React.useState('')
   const handleClick = () => {
     if (!username || !lastname || !firstname || !password) setFormErr('Заполните все поля')
@@ -63,7 +63,6 @@ function SignUp({ username, password, firstname, lastname,
             <div className={styles.formErr}>
               {(err && !formErr) ? err : formErr}
             </div>
-            <LoadSpinner />
             <PrimeBtn
               text="Зарегестрироваться"
               onClick={handleClick}
@@ -80,6 +79,7 @@ function SignUp({ username, password, firstname, lastname,
           </form>
         </Col>
       </Container>
+      {loading && <LoadSpinner />}
       {user && <Redirect to="/" />}
     </div>
   )
@@ -95,6 +95,7 @@ SignUp.propTypes = {
   err: string,
   clear: func,
   user: object,
+  loading: bool,
 }
 
 const mapStateToProps = (state) => ({
@@ -103,6 +104,7 @@ const mapStateToProps = (state) => ({
   firstname: state.fields.signup.firstname,
   lastname: state.fields.signup.lastname,
   err: state.auth.signup.error,
+  loading: state.auth.signup.loading,
   user: state.auth.user,
 })
 

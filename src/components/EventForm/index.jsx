@@ -8,10 +8,11 @@ import PrimeBtn from '../PrimeBtn'
 import PrimeText from '../PrimeText'
 import Logo from '../Logo'
 import { changeField, clearFields, createEvent } from '../../store/actions'
+import LoadSpinner from '../LoadSpinner'
 import styles from './event.module.scss'
 
 function EventForm({ eventname, place, date, time, desc, err, changeValue, creEvent, clear,
-  user, success,
+  user, success, loading,
 }) {
   const [formErr, setFormErr] = React.useState('')
   const handleClick = () => {
@@ -73,6 +74,7 @@ function EventForm({ eventname, place, date, time, desc, err, changeValue, creEv
       <div className={styles.formErr}>
         {(err && user) ? err : formErr}
       </div>
+      {loading && <LoadSpinner />}
       {success && <Redirect to="/event" />}
       <PrimeBtn text="Создать" onClick={handleClick} className={styles.btn} />
     </form>
@@ -91,6 +93,7 @@ EventForm.propTypes = {
   changeValue: func,
   user: object,
   success: bool,
+  loading: bool,
 }
 
 const mapStateToProps = (state) => ({
@@ -101,6 +104,7 @@ const mapStateToProps = (state) => ({
   desc: state.fields.event.desc,
   err: state.event.create.error,
   success: state.event.create.success,
+  loading: state.event.create.loading,
   user: state.auth.user,
 })
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Col } from 'react-bootstrap'
-import { string, number, func, object, oneOfType } from 'prop-types'
+import { string, number, func, object, oneOfType, bool } from 'prop-types'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Logo from '../../components/Logo'
@@ -8,9 +8,10 @@ import PrimeInput from '../../components/PrimeInput'
 import PrimeBtn from '../../components/PrimeBtn'
 import HelpLink from '../../components/HelpLink'
 import { loginAction, changeField, clearFields } from '../../store/actions'
+import LoadSpinner from '../../components/LoadSpinner'
 import styles from './login.module.scss'
 
-function LogIn({ username, password, changeValue, setBody, clear, err, user,
+function LogIn({ username, password, changeValue, setBody, clear, err, user, loading,
 }) {
   const [formErr, setFormErr] = React.useState('')
   const handleClick = () => {
@@ -56,6 +57,7 @@ function LogIn({ username, password, changeValue, setBody, clear, err, user,
           </form>
         </Col>
       </Container>
+      {loading && <LoadSpinner />}
       {user && <Redirect to="/" />}
     </div>
   )
@@ -68,6 +70,7 @@ LogIn.propTypes = {
   user: object,
   setBody: func,
   err: string,
+  loading: bool,
   clear: func,
 }
 
@@ -75,6 +78,7 @@ const mapStateToProps = (state) => ({
   username: state.fields.login.username,
   password: state.fields.login.password,
   err: state.auth.login.error,
+  loading: state.auth.login.loading,
   user: state.auth.user,
 })
 

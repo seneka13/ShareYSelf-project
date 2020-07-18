@@ -4,13 +4,14 @@ import { Container, Row } from 'react-bootstrap'
 import { getEvents, succesReset } from '../../store/actions'
 import PageWrapper from '../../components/PageWrapper'
 import EventCard from './EventCard'
+import LoadSpinner from '../../components/LoadSpinner'
 import styles from './event.module.scss'
 
 function EventPage() {
-  const { event, error } = useSelector((state) => ({
+  const { event, error, loading } = useSelector((state) => ({
     event: state.event.events,
     error: state.event.get.error,
-    success: state.event.create.success,
+    loading: state.event.get.loading,
   }))
 
   const dispatch = useDispatch()
@@ -43,6 +44,7 @@ function EventPage() {
               )
             })}
           </Row>
+          {loading && <LoadSpinner />}
           {error && (<div className={styles.getError}>{error}</div>)}
         </Container>
       </div>

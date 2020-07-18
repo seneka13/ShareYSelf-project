@@ -7,10 +7,11 @@ import PrimeInput from '../../../components/PrimeInput'
 import PrimeText from '../../../components/PrimeText'
 import Modal from '../../../components/Modal'
 import styles from './modal.module.scss'
+import LoadSpinner from '../../../components/LoadSpinner'
 import { changeField, clearFields, editEvent } from '../../../store/actions'
 
 function EditForm({ eventname, place, date, time, desc, err, id, author, changeValue, edEvent,
-  clear, defEvent, defPlace, defDate, defTime, defDesc, success }) {
+  clear, defEvent, defPlace, defDate, defTime, defDesc, success, loading }) {
   const [formErr, setFormErr] = React.useState('')
   React.useEffect(() => {
     changeValue('eventname', defEvent)
@@ -71,6 +72,7 @@ function EditForm({ eventname, place, date, time, desc, err, id, author, changeV
           onChange={(value) => changeValue('desc', value)}
         />
         <div className={styles.formErr}>{(err && !formErr) ? err : formErr}</div>
+        {loading && <LoadSpinner />}
         {success && <Redirect to="/event" />}
         <PrimeBtn className={styles.editBtn} text="Отправить" onClick={handleEdit} />
       </form>
@@ -96,6 +98,7 @@ EditForm.propTypes = {
   changeValue: func,
   err: string,
   success: bool,
+  loading: bool,
 }
 
 const mapStateToProps = (state) => ({
@@ -106,6 +109,7 @@ const mapStateToProps = (state) => ({
   desc: state.fields.editevent.desc,
   err: state.event.edit.error,
   success: state.event.edit.success,
+  loading: state.event.edit.loading,
 })
 
 const mapDispatchToProps = (dispatch) => ({

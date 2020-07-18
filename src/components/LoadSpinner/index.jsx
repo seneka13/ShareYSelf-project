@@ -1,13 +1,15 @@
 import React from 'react'
 import styles from './load.module.scss'
 
-function LoadSpinner({ className }) {
+function LoadSpinner() {
   return (
-    <div className={styles.ldsEllipsis}>
-      <div className={className} />
-      <div className={className} />
-      <div className={className} />
-      <div className={className} />
+    <div className={styles.loadposit}>
+      <div className={styles.ldsEllipsis}>
+        <div />
+        <div />
+        <div />
+        <div />
+      </div>
     </div>
   )
 }
