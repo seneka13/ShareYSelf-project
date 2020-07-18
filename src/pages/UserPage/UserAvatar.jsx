@@ -31,7 +31,7 @@ function UserAvatar() {
           {avatar ? <img src={avatar} alt="avatar" /> : <ProfileIcon className={styles.profIcon} />}
         </div>
         <label className={styles.avatarUpload} htmlFor="avatar">
-          Загрузить
+          {avatar ? 'Изменить' : 'Загрузить'}
           <input
             id="avatar"
             type="file"

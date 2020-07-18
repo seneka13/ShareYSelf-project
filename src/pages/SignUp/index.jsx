@@ -7,6 +7,7 @@ import PrimeInput from '../../components/PrimeInput'
 import Logo from '../../components/Logo'
 import { changeField, clearFields, signupAction } from '../../store/actions'
 import PrimeBtn from '../../components/PrimeBtn'
+import LoadSpinner from '../../components/LoadSpinner'
 import styles from './signup.module.scss'
 
 function SignUp({ username, password, firstname, lastname,
@@ -62,6 +63,7 @@ function SignUp({ username, password, firstname, lastname,
             <div className={styles.formErr}>
               {(err && !formErr) ? err : formErr}
             </div>
+            <LoadSpinner />
             <PrimeBtn
               text="Зарегестрироваться"
               onClick={handleClick}

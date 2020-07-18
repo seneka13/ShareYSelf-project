@@ -17,7 +17,7 @@ import {
 
   USER_LOGOUT } from '../constants'
 
-const endpoint = 'http://localhost:8220'
+const endpoint = 'http://localhost:8220' || 'https://polar-brook-40910.herokuapp.com'
 
 // функция проверят успешно ли отправился запрос
 const checkResponse = (response, errText) => {
