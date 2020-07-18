@@ -17,7 +17,7 @@ import {
   EDIT_EVENT_FAILED,
 } from '../constants'
 
-const endpoint = 'http://localhost:8220' || 'https://polar-brook-40910.herokuapp.com'
+const endpoint = 'https://polar-brook-40910.herokuapp.com'
 
 // функция проверят успешно ли отправился запрос
 const checkResponse = (response, errText) => {
