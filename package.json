@@ -21,6 +21,7 @@
     "shortid": "^2.2.15",
     "sweetalert2-react": "^0.8.3"
   },
+  "homepage": "https://seneka13.github.io/ShareYSelf-project/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
