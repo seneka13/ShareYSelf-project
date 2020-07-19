@@ -1,4 +1,5 @@
 @import '../../styles/vars.scss';
+@import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap');
 
 html {
     scroll-behavior: smooth;
@@ -17,7 +18,7 @@ html {
         text-align: center;
 
         .title {
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             font-size: calc((100vw - 480px)/(1280 - 480) * (120 - 80) + 80px);
             text-align: left;
             animation: title 1.8s ease;
@@ -25,7 +26,7 @@ html {
         }
 
         .subtitle {
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             font-size: calc((100vw - 480px)/(1280 - 480) * (60 - 30) + 30px);
             padding-left: 150px;
             animation: title 3s ease;

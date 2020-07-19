@@ -5,7 +5,7 @@ import styles from './logo.module.scss'
 function Logo() {
   return (
     <NavLink to="/" exact>
-      <h1 className={styles.homePage}>ShareYSelf</h1>
+      <h1 className={styles.logo}>ShareYSelf</h1>
     </NavLink>
   )
 }

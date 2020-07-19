@@ -1,7 +1,9 @@
 @import '../../styles/vars.scss';
+@import url('https://fonts.googleapis.com/css2?family=Boogaloo&display=swap');
 
-.homePage {
+.logo {
     color: $txt-color3;
     font-size: 45px;
     font-weight: bold;
+    font-family: 'Boogaloo', cursive;
 }

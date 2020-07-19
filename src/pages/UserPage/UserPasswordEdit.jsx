@@ -28,8 +28,10 @@ function UserPasswordEdit({ user, pass, edPass, changeValue, clear,
   }
 
   React.useEffect(() => {
-    if (success) logOut()
-    clear()
+    if (success) {
+      logOut()
+      clear()
+    }
   }, [clear, logOut, success])
 
   return (
