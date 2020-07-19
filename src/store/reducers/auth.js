@@ -64,12 +64,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         data: stateCreator('failed', action.error),
       }
-    case USER_PASSWORD_CHANGE_LOADING:
+    case USER_PASSWORD_CHANGE_SUCCESS:
       return {
         ...state,
         edit: stateCreator('success'),
       }
-    case USER_PASSWORD_CHANGE_SUCCESS:
+    case USER_PASSWORD_CHANGE_LOADING:
       return {
         ...state,
         edit: stateCreator('loading'),
@@ -115,6 +115,10 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         user: null,
+        edit: initialState,
+        login: initialState,
+        signup: initialState,
+        data: initialState,
       }
     default:
       return state

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Container, Row } from 'react-bootstrap'
-import { getEvents, succesReset } from '../../store/actions'
+import { getEvents, succesReset, clearFields } from '../../store/actions'
 import PageWrapper from '../../components/PageWrapper'
 import EventCard from './EventCard'
 import LoadSpinner from '../../components/LoadSpinner'
@@ -19,6 +19,8 @@ function EventPage() {
   React.useEffect(() => {
     const getEventList = () => dispatch(getEvents())
     getEventList()
+    const clear = () => dispatch(clearFields())
+    clear()
     const resetSuccess = () => dispatch(succesReset())
     resetSuccess()
   }, [dispatch])

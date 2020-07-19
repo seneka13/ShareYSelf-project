@@ -7,11 +7,11 @@ import Logo from '../../components/Logo'
 import PrimeInput from '../../components/PrimeInput'
 import PrimeBtn from '../../components/PrimeBtn'
 import HelpLink from '../../components/HelpLink'
-import { loginAction, changeField, clearFields } from '../../store/actions'
+import { loginAction, changeField } from '../../store/actions'
 import LoadSpinner from '../../components/LoadSpinner'
 import styles from './login.module.scss'
 
-function LogIn({ username, password, changeValue, setBody, clear, err, user, loading,
+function LogIn({ username, password, changeValue, setBody, err, user, loading,
 }) {
   const [formErr, setFormErr] = React.useState('')
   const handleClick = () => {
@@ -19,7 +19,6 @@ function LogIn({ username, password, changeValue, setBody, clear, err, user, loa
     else {
       setFormErr('')
       setBody({ username, password })
-      clear()
     }
   }
 
@@ -71,7 +70,6 @@ LogIn.propTypes = {
   setBody: func,
   err: string,
   loading: bool,
-  clear: func,
 }
 
 const mapStateToProps = (state) => ({
@@ -84,7 +82,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   changeValue: (formField, value) => dispatch(changeField('login', formField, value)),
-  clear: () => dispatch(clearFields()),
   setBody: (body) => dispatch(loginAction(body)),
 })
 

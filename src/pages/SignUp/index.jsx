@@ -5,20 +5,19 @@ import { connect } from 'react-redux'
 import { string, number, func, object, oneOfType, bool } from 'prop-types'
 import PrimeInput from '../../components/PrimeInput'
 import Logo from '../../components/Logo'
-import { changeField, clearFields, signupAction } from '../../store/actions'
+import { changeField, signupAction } from '../../store/actions'
 import PrimeBtn from '../../components/PrimeBtn'
 import LoadSpinner from '../../components/LoadSpinner'
 import styles from './signup.module.scss'
 
 function SignUp({ username, password, firstname, lastname,
-  changeValue, creAccount, clear, err, loading, user }) {
+  changeValue, creAccount, err, loading, user }) {
   const [formErr, setFormErr] = React.useState('')
   const handleClick = () => {
     if (!username || !lastname || !firstname || !password) setFormErr('Заполните все поля')
     else {
       setFormErr('')
       creAccount({ username, password, firstname, lastname })
-      clear()
     }
   }
 
@@ -93,7 +92,6 @@ SignUp.propTypes = {
   changeValue: func,
   creAccount: func,
   err: string,
-  clear: func,
   user: object,
   loading: bool,
 }
@@ -110,7 +108,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   changeValue: (formField, value) => dispatch(changeField('signup', formField, value)),
-  clear: () => dispatch(clearFields()),
   creAccount: (body) => dispatch(signupAction(body)),
 })
 

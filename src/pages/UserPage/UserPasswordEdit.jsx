@@ -1,13 +1,15 @@
 import React from 'react'
-import { string, number, func, object, oneOfType } from 'prop-types'
+import { string, number, func, object, oneOfType, bool } from 'prop-types'
 import { connect } from 'react-redux'
 import Modal from '../../components/Modal'
 import PrimeInput from '../../components/PrimeInput'
 import PrimeBtn from '../../components/PrimeBtn'
+import LoadSpunner from '../../components/LoadSpinner'
 import { changeField, clearFields, userLogOut, editPassword } from '../../store/actions'
 import styles from './user.module.scss'
 
-function UserPasswordEdit({ user, pass, edPass, changeValue, clear, logOut, err }) {
+function UserPasswordEdit({ user, pass, edPass, changeValue, clear,
+  logOut, err, success, loading }) {
   const [formErr, setFormErr] = React.useState('')
   const [currentPass, setCurrentPass] = React.useState('')
   const [passRepeat, setPassRepeat] = React.useState('')
@@ -22,10 +24,13 @@ function UserPasswordEdit({ user, pass, edPass, changeValue, clear, logOut, err 
     else {
       setFormErr('')
       edPass(userId, { password: pass })
-      logOut()
-      clear()
     }
   }
+
+  React.useEffect(() => {
+    if (success) logOut()
+    clear()
+  }, [clear, logOut, success])
 
   return (
     <Modal className={styles.userEditBtn} btnText="Изменить пароль">
@@ -57,6 +62,7 @@ function UserPasswordEdit({ user, pass, edPass, changeValue, clear, logOut, err 
       <div className={styles.formErr}>
         {(err && !formErr) ? err : formErr}
       </div>
+      {loading && <LoadSpunner />}
       <PrimeBtn text="Подтвердить" className={styles.userEditBtn} onClick={handleEdit} />
     </Modal>
   )
@@ -70,12 +76,16 @@ UserPasswordEdit.propTypes = {
   clear: func,
   user: object,
   err: string,
+  loading: bool,
+  success: bool,
 }
 
 const mapStateToProps = (state) => ({
   user: state.auth.user,
   pass: state.fields.editpassword.password,
   err: state.auth.edit.error,
+  success: state.auth.edit.success,
+  loading: state.auth.edit.loading,
 })
 
 const mapDispatchToProps = (dispatch) => ({

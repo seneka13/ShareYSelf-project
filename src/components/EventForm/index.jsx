@@ -11,7 +11,7 @@ import { changeField, clearFields, createEvent } from '../../store/actions'
 import LoadSpinner from '../LoadSpinner'
 import styles from './event.module.scss'
 
-function EventForm({ eventname, place, date, time, desc, err, changeValue, creEvent, clear,
+function EventForm({ eventname, place, date, time, desc, err, changeValue, creEvent,
   user, success, loading,
 }) {
   const [formErr, setFormErr] = React.useState('')
@@ -21,7 +21,6 @@ function EventForm({ eventname, place, date, time, desc, err, changeValue, creEv
       setFormErr('')
       const author = `${user.firstname} ${user.lastname}`
       creEvent({ eventname, place, date, time, desc, author })
-      clear()
     }
   }
 

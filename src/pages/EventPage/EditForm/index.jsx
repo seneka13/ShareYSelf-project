@@ -8,10 +8,10 @@ import PrimeText from '../../../components/PrimeText'
 import Modal from '../../../components/Modal'
 import styles from './modal.module.scss'
 import LoadSpinner from '../../../components/LoadSpinner'
-import { changeField, clearFields, editEvent } from '../../../store/actions'
+import { changeField, editEvent } from '../../../store/actions'
 
 function EditForm({ eventname, place, date, time, desc, err, id, author, changeValue, edEvent,
-  clear, defEvent, defPlace, defDate, defTime, defDesc, success, loading }) {
+  defEvent, defPlace, defDate, defTime, defDesc, success, loading }) {
   const [formErr, setFormErr] = React.useState('')
   React.useEffect(() => {
     changeValue('eventname', defEvent)
@@ -27,7 +27,6 @@ function EditForm({ eventname, place, date, time, desc, err, id, author, changeV
       const body = { eventname, place, date, time, desc, author }
       setFormErr('')
       edEvent(id, body)
-      clear()
     }
   }
 
@@ -94,7 +93,6 @@ EditForm.propTypes = {
   defTime: oneOfType([string.isRequired, number.isRequired]),
   defDesc: oneOfType([string.isRequired, number.isRequired]),
   edEvent: func,
-  clear: func,
   changeValue: func,
   err: string,
   success: bool,
@@ -115,7 +113,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   changeValue: (formField, value) => dispatch(changeField('editevent', formField, value)),
   edEvent: (id, body) => dispatch(editEvent(id, body)),
-  clear: () => dispatch(clearFields()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditForm)
