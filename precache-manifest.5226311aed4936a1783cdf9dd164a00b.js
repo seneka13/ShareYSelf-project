@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fac2078c9ff976a2894cf77fcbd594df",
+    "revision": "56c631f40998946661e0a67cb3989ea8",
     "url": "/ShareYSelf-project/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ShareYSelf-project/static/css/2.af3c1da9.chunk.css"
   },
   {
-    "revision": "ea96bd286096faa8c5c7",
+    "revision": "cb80bc678f696596d4ba",
     "url": "/ShareYSelf-project/static/css/main.f5861dd9.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ShareYSelf-project/static/js/2.19fcec52.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ea96bd286096faa8c5c7",
-    "url": "/ShareYSelf-project/static/js/main.c0abd0f8.chunk.js"
+    "revision": "cb80bc678f696596d4ba",
+    "url": "/ShareYSelf-project/static/js/main.ed116108.chunk.js"
   },
   {
     "revision": "4dfd757c77ddf704a61c",
