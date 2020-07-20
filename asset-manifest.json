@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/ShareYSelf-project/static/css/main.e4dc16e8.chunk.css",
-    "main.js": "/ShareYSelf-project/static/js/main.8e16f9da.chunk.js",
-    "main.js.map": "/ShareYSelf-project/static/js/main.8e16f9da.chunk.js.map",
+    "main.js": "/ShareYSelf-project/static/js/main.a80989d0.chunk.js",
+    "main.js.map": "/ShareYSelf-project/static/js/main.a80989d0.chunk.js.map",
     "runtime-main.js": "/ShareYSelf-project/static/js/runtime-main.05719476.js",
     "runtime-main.js.map": "/ShareYSelf-project/static/js/runtime-main.05719476.js.map",
     "static/css/2.af3c1da9.chunk.css": "/ShareYSelf-project/static/css/2.af3c1da9.chunk.css",
-    "static/js/2.8e0df64e.chunk.js": "/ShareYSelf-project/static/js/2.8e0df64e.chunk.js",
-    "static/js/2.8e0df64e.chunk.js.map": "/ShareYSelf-project/static/js/2.8e0df64e.chunk.js.map",
+    "static/js/2.999ef4ca.chunk.js": "/ShareYSelf-project/static/js/2.999ef4ca.chunk.js",
+    "static/js/2.999ef4ca.chunk.js.map": "/ShareYSelf-project/static/js/2.999ef4ca.chunk.js.map",
     "index.html": "/ShareYSelf-project/index.html",
-    "precache-manifest.4205517bb452341800d6c659c723b50e.js": "/ShareYSelf-project/precache-manifest.4205517bb452341800d6c659c723b50e.js",
+    "precache-manifest.9e35c2ddd69ea6ecc4f71d3d9c6c7a5f.js": "/ShareYSelf-project/precache-manifest.9e35c2ddd69ea6ecc4f71d3d9c6c7a5f.js",
     "service-worker.js": "/ShareYSelf-project/service-worker.js",
     "static/css/2.af3c1da9.chunk.css.map": "/ShareYSelf-project/static/css/2.af3c1da9.chunk.css.map",
     "static/css/main.e4dc16e8.chunk.css.map": "/ShareYSelf-project/static/css/main.e4dc16e8.chunk.css.map",
-    "static/js/2.8e0df64e.chunk.js.LICENSE.txt": "/ShareYSelf-project/static/js/2.8e0df64e.chunk.js.LICENSE.txt",
+    "static/js/2.999ef4ca.chunk.js.LICENSE.txt": "/ShareYSelf-project/static/js/2.999ef4ca.chunk.js.LICENSE.txt",
     "static/media/about.module.scss": "/ShareYSelf-project/static/media/aboutBg.c25a27ec.jpg",
     "static/media/signup.module.scss": "/ShareYSelf-project/static/media/bg2.975cbcf4.jpg",
     "static/media/login.module.scss": "/ShareYSelf-project/static/media/bg3.310ddd60.jpg",
@@ -26,8 +26,8 @@
   "entrypoints": [
     "static/js/runtime-main.05719476.js",
     "static/css/2.af3c1da9.chunk.css",
-    "static/js/2.8e0df64e.chunk.js",
+    "static/js/2.999ef4ca.chunk.js",
     "static/css/main.e4dc16e8.chunk.css",
-    "static/js/main.8e16f9da.chunk.js"
+    "static/js/main.a80989d0.chunk.js"
   ]
 }
