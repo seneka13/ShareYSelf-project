@@ -7,9 +7,8 @@ import { userLogOut, clearFields } from '../../store/actions'
 import styles from './auth.module.scss'
 
 function AuthOn() {
-  const { user, avatar } = useSelector((state) => ({
+  const { user } = useSelector((state) => ({
     user: state.auth.user,
-    avatar: state.fields.user.avatar,
   }))
 
   const dispatch = useDispatch()
@@ -26,7 +25,7 @@ function AuthOn() {
     <>
       <li className={styles.userName}>
         <NavLink to="/user" exact>
-          {avatar ? <img className={styles.avatar} src={avatar} alt="avatar" /> : <ProfileIcon className={styles.icon} />}
+          {user.avatar ? <img className={styles.avatar} src={user.avatar} alt="avatar" /> : <ProfileIcon className={styles.icon} />}
           {user && user.firstname} {user && user.lastname}
         </NavLink>
       </li>

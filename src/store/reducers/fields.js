@@ -17,9 +17,6 @@ const initialState = {
   editpassword: {
     password: '',
   },
-  user: {
-    avatar: '',
-  },
   event: {
     eventname: '',
     place: '',

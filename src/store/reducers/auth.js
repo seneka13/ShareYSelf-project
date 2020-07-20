@@ -7,6 +7,10 @@ import {
   USER_PASSWORD_CHANGE_SUCCESS,
   USER_PASSWORD_CHANGE_FAILED,
 
+  USER_AVATAR_LOADING,
+  USER_AVATAR_SUCCESS,
+  USER_AVATAR_FAILED,
+
   LOGIN_LOADING,
   LOGIN_SUCCESS,
   LOGIN_FAILED,
@@ -39,6 +43,12 @@ const initialState = {
     error: '',
   },
   edit: {
+    success: false,
+    loading: false,
+    failed: false,
+    error: '',
+  },
+  avatar: {
     success: false,
     loading: false,
     failed: false,
@@ -78,6 +88,21 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         edit: stateCreator('failed', action.error),
+      }
+    case USER_AVATAR_SUCCESS:
+      return {
+        ...state,
+        avatar: stateCreator('success'),
+      }
+    case USER_AVATAR_LOADING:
+      return {
+        ...state,
+        avatar: stateCreator('loading'),
+      }
+    case USER_AVATAR_FAILED:
+      return {
+        ...state,
+        avatar: stateCreator('failed', action.error),
       }
     case LOGIN_SUCCESS:
       return {

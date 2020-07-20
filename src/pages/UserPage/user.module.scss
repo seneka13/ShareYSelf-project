@@ -83,6 +83,12 @@
             display: none;
         }
     }
+
+    .formErr {
+        color: $error-color;
+        height: 30px;
+        font-size: 15px;
+    }
 }
 
 .userInfo {

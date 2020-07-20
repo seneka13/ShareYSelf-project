@@ -7,6 +7,10 @@ import {
   USER_PASSWORD_CHANGE_SUCCESS,
   USER_PASSWORD_CHANGE_FAILED,
 
+  USER_AVATAR_LOADING,
+  USER_AVATAR_SUCCESS,
+  USER_AVATAR_FAILED,
+
   LOGIN_LOADING,
   LOGIN_SUCCESS,
   LOGIN_FAILED,
@@ -93,6 +97,24 @@ export const editPassword = (id, body) => (dispatch) => {
     })
     .catch((error) => {
       dispatch({ type: USER_PASSWORD_CHANGE_FAILED, error: errorHandler(error) })
+    })
+}
+
+export const addAvatar = (id, body) => (dispatch) => {
+  dispatch({ type: USER_AVATAR_LOADING })
+  fetch(`${endpoint}/add-avatar/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  })
+    .then((response) => checkResponse(response, 'Слишком большой файл'))
+    .then(() => {
+      dispatch({ type: USER_AVATAR_SUCCESS })
+    })
+    .catch((error) => {
+      dispatch({ type: USER_AVATAR_FAILED, error: errorHandler(error) })
     })
 }
 
