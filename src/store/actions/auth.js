@@ -20,8 +20,7 @@ import {
   SIGNUP_FAILED,
 
   USER_LOGOUT } from '../constants'
-
-const endpoint = 'https://polar-brook-40910.herokuapp.com'
+import ENDPOINT from '../url'
 
 // функция проверят успешно ли отправился запрос
 const checkResponse = (response, errText) => {
@@ -33,7 +32,7 @@ const errorHandler = (error) => (error.response ? error.response.data : error.me
 
 export const getData = () => (dispatch) => {
   dispatch({ type: USER_DATA_LOADING })
-  fetch(`${endpoint}/get-user`, {
+  fetch(`${ENDPOINT}/get-user`, {
     method: 'GET',
     headers: {
       'X-Auth': localStorage.getItem('token'),
@@ -50,7 +49,7 @@ export const getData = () => (dispatch) => {
 
 export const loginAction = (body) => (dispatch) => {
   dispatch({ type: LOGIN_LOADING })
-  fetch(`${endpoint}/login`, {
+  fetch(`${ENDPOINT}/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
@@ -67,7 +66,7 @@ export const loginAction = (body) => (dispatch) => {
 
 export const signupAction = (body) => (dispatch) => {
   dispatch({ type: SIGNUP_LOADING })
-  fetch(`${endpoint}/signup`, {
+  fetch(`${ENDPOINT}/signup`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
@@ -84,7 +83,7 @@ export const signupAction = (body) => (dispatch) => {
 
 export const editPassword = (id, body) => (dispatch) => {
   dispatch({ type: USER_PASSWORD_CHANGE_LOADING })
-  fetch(`${endpoint}/edit-password/${id}`, {
+  fetch(`${ENDPOINT}/edit-password/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -102,7 +101,7 @@ export const editPassword = (id, body) => (dispatch) => {
 
 export const addAvatar = (id, body) => (dispatch) => {
   dispatch({ type: USER_AVATAR_LOADING })
-  fetch(`${endpoint}/add-avatar/${id}`, {
+  fetch(`${ENDPOINT}/add-avatar/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

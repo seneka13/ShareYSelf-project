@@ -16,8 +16,7 @@ import {
   EDIT_EVENT_SUCCESS,
   EDIT_EVENT_FAILED,
 } from '../constants'
-
-const endpoint = 'https://polar-brook-40910.herokuapp.com'
+import ENDPOINT from '../url'
 
 // функция проверят успешно ли отправился запрос
 const checkResponse = (response, errText) => {
@@ -29,7 +28,7 @@ const errorHandler = (error) => (error.response ? error.response.data : error.me
 
 export const getEvents = () => (dispatch) => {
   dispatch({ type: GET_EVENT_LOADING })
-  fetch(`${endpoint}/get-events`)
+  fetch(`${ENDPOINT}/get-events`)
     .then((response) => checkResponse(response, 'Ошибка загрузки событий'))
     .then((data) => {
       dispatch({ type: GET_EVENT_SUCCESS, data })
@@ -41,7 +40,7 @@ export const getEvents = () => (dispatch) => {
 
 export const createEvent = (body) => (dispatch) => {
   dispatch({ type: CREATE_EVENT_LOADING })
-  fetch(`${endpoint}/create-event`, {
+  fetch(`${ENDPOINT}/create-event`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
@@ -57,7 +56,7 @@ export const createEvent = (body) => (dispatch) => {
 
 export const deleteEvent = (id) => (dispatch) => {
   dispatch({ type: DELETE_EVENT_LOADING })
-  fetch(`${endpoint}/delete-event/${id}`, {
+  fetch(`${ENDPOINT}/delete-event/${id}`, {
     method: 'DELETE',
   })
     .then((response) => checkResponse(response, 'Удаление невозможно'))
@@ -71,7 +70,7 @@ export const deleteEvent = (id) => (dispatch) => {
 
 export const editEvent = (id, body) => (dispatch) => {
   dispatch({ type: EDIT_EVENT_LOADING })
-  fetch(`${endpoint}/edit-event/${id}`, {
+  fetch(`${ENDPOINT}/edit-event/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

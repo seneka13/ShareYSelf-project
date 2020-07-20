@@ -1,7 +1,6 @@
 import React from 'react'
 import { Container, Col, Row } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
-import img from '../../img/meetup.png'
 import styles from './home.module.scss'
 
 function Block2() {
@@ -18,7 +17,7 @@ function Block2() {
             </p>
           </Col>
           <Col xs={12} md={6} className={styles.homeImg}>
-            <img src={img} alt="img" />
+            <img src='https://seneka13.github.io/ShareYSelf-project/img/meetup.png' alt="img" />
           </Col>
         </Row>
       </Container>

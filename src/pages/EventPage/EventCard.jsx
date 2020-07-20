@@ -2,7 +2,6 @@ import React from 'react'
 import { Col } from 'react-bootstrap'
 import { string, number, oneOfType } from 'prop-types'
 import { NavLink } from 'react-router-dom'
-import img from '../../img/event.png'
 import styles from './event.module.scss'
 
 function EventCard({ id, eventname, place, date, time, desc, author }) {
@@ -31,7 +30,7 @@ function EventCard({ id, eventname, place, date, time, desc, author }) {
       }}
       >
         <div className={styles.eventCard}>
-          <img src={img} alt="event" />
+          <img src='https://seneka13.github.io/ShareYSelf-project/img/event.png' alt="event" />
           <div className={styles.eventName}>{eventname}</div>
           <div className={styles.eventplace}>Место проведения: {place}</div>
           <div className={styles.eventDate}>
