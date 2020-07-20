@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0be896422f7cbcd828018cc2143e5b36",
+    "revision": "e295239ffe0c2c010fec5414f07a4650",
     "url": "/ShareYSelf-project/index.html"
   },
   {
-    "revision": "d0358771f663b25a8c3a",
+    "revision": "205d83787867e45e1060",
     "url": "/ShareYSelf-project/static/css/2.af3c1da9.chunk.css"
   },
   {
-    "revision": "2ade246673fe16e5976c",
-    "url": "/ShareYSelf-project/static/css/main.f7f8321c.chunk.css"
+    "revision": "f6a413591767774a7f27",
+    "url": "/ShareYSelf-project/static/css/main.f6d4a345.chunk.css"
   },
   {
-    "revision": "d0358771f663b25a8c3a",
-    "url": "/ShareYSelf-project/static/js/2.9be7faa5.chunk.js"
+    "revision": "205d83787867e45e1060",
+    "url": "/ShareYSelf-project/static/js/2.f87107f1.chunk.js"
   },
   {
     "revision": "3453b8997016469371284a28c0e873e2",
-    "url": "/ShareYSelf-project/static/js/2.9be7faa5.chunk.js.LICENSE.txt"
+    "url": "/ShareYSelf-project/static/js/2.f87107f1.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "2ade246673fe16e5976c",
-    "url": "/ShareYSelf-project/static/js/main.0a58cd05.chunk.js"
+    "revision": "f6a413591767774a7f27",
+    "url": "/ShareYSelf-project/static/js/main.08023458.chunk.js"
   },
   {
     "revision": "4dfd757c77ddf704a61c",
