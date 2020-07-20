@@ -1,34 +1,25 @@
 {
   "files": {
-    "main.css": "/ShareYSelf-project/static/css/main.f6d4a345.chunk.css",
-    "main.js": "/ShareYSelf-project/static/js/main.08023458.chunk.js",
-    "main.js.map": "/ShareYSelf-project/static/js/main.08023458.chunk.js.map",
+    "main.css": "/ShareYSelf-project/static/css/main.f5861dd9.chunk.css",
+    "main.js": "/ShareYSelf-project/static/js/main.c0abd0f8.chunk.js",
+    "main.js.map": "/ShareYSelf-project/static/js/main.c0abd0f8.chunk.js.map",
     "runtime-main.js": "/ShareYSelf-project/static/js/runtime-main.05719476.js",
     "runtime-main.js.map": "/ShareYSelf-project/static/js/runtime-main.05719476.js.map",
     "static/css/2.af3c1da9.chunk.css": "/ShareYSelf-project/static/css/2.af3c1da9.chunk.css",
-    "static/js/2.f87107f1.chunk.js": "/ShareYSelf-project/static/js/2.f87107f1.chunk.js",
-    "static/js/2.f87107f1.chunk.js.map": "/ShareYSelf-project/static/js/2.f87107f1.chunk.js.map",
+    "static/js/2.19fcec52.chunk.js": "/ShareYSelf-project/static/js/2.19fcec52.chunk.js",
+    "static/js/2.19fcec52.chunk.js.map": "/ShareYSelf-project/static/js/2.19fcec52.chunk.js.map",
     "index.html": "/ShareYSelf-project/index.html",
-    "precache-manifest.02ea5a266294f4bbec7727023cf0f165.js": "/ShareYSelf-project/precache-manifest.02ea5a266294f4bbec7727023cf0f165.js",
+    "precache-manifest.c1fedfc9871ad197f412052b8039ea03.js": "/ShareYSelf-project/precache-manifest.c1fedfc9871ad197f412052b8039ea03.js",
     "service-worker.js": "/ShareYSelf-project/service-worker.js",
     "static/css/2.af3c1da9.chunk.css.map": "/ShareYSelf-project/static/css/2.af3c1da9.chunk.css.map",
-    "static/css/main.f6d4a345.chunk.css.map": "/ShareYSelf-project/static/css/main.f6d4a345.chunk.css.map",
-    "static/js/2.f87107f1.chunk.js.LICENSE.txt": "/ShareYSelf-project/static/js/2.f87107f1.chunk.js.LICENSE.txt",
-    "static/media/not.module.scss": "/ShareYSelf-project/static/media/NotFound.efb45ea0.jpg",
-    "static/media/about.module.scss": "/ShareYSelf-project/static/media/aboutBg.c25a27ec.jpg",
-    "static/media/signup.module.scss": "/ShareYSelf-project/static/media/bg2.975cbcf4.jpg",
-    "static/media/login.module.scss": "/ShareYSelf-project/static/media/bg3.310ddd60.jpg",
-    "static/media/event.module.scss": "/ShareYSelf-project/static/media/eBg.5cd5996c.jpg",
-    "static/media/event.png": "/ShareYSelf-project/static/media/event.701243cc.png",
-    "static/media/home.module.scss": "/ShareYSelf-project/static/media/hBg3.05d0d755.jpg",
-    "static/media/meetup.png": "/ShareYSelf-project/static/media/meetup.f06661d8.png",
-    "static/media/user.module.scss": "/ShareYSelf-project/static/media/userBg.b5174d8c.jpg"
+    "static/css/main.f5861dd9.chunk.css.map": "/ShareYSelf-project/static/css/main.f5861dd9.chunk.css.map",
+    "static/js/2.19fcec52.chunk.js.LICENSE.txt": "/ShareYSelf-project/static/js/2.19fcec52.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.05719476.js",
     "static/css/2.af3c1da9.chunk.css",
-    "static/js/2.f87107f1.chunk.js",
-    "static/css/main.f6d4a345.chunk.css",
-    "static/js/main.08023458.chunk.js"
+    "static/js/2.19fcec52.chunk.js",
+    "static/css/main.f5861dd9.chunk.css",
+    "static/js/main.c0abd0f8.chunk.js"
   ]
 }
