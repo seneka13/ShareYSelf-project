@@ -1,19 +1,34 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
-import { connect } from 'react-redux'
-import { string, func, number, object, oneOfType, bool } from 'prop-types'
+import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import PrimeInput from '../PrimeInput'
 import PrimeBtn from '../PrimeBtn'
 import PrimeText from '../PrimeText'
 import Logo from '../Logo'
-import { changeField, clearFields, createEvent } from '../../store/actions'
+import { changeField, createEvent } from '../../store/actions'
 import LoadSpinner from '../LoadSpinner'
 import styles from './event.module.scss'
 
-function EventForm({ eventname, place, date, time, desc, err, changeValue, creEvent,
-  user, success, loading,
-}) {
+function EventForm() {
+  const dispatch = useDispatch()
+  const changeValue = React.useCallback((formField, value) => dispatch(changeField('event', formField, value)),
+    [dispatch])
+  const creEvent = (body) => dispatch(createEvent(body))
+
+  const { eventname, place, date, time,
+    desc, err, success, loading, user } = useSelector((state) => ({
+    eventname: state.fields.event.eventname,
+    place: state.fields.event.place,
+    date: state.fields.event.date,
+    time: state.fields.event.time,
+    desc: state.fields.event.desc,
+    err: state.event.create.error,
+    success: state.event.create.success,
+    loading: state.event.create.loading,
+    user: state.auth.user,
+  }))
+
   const [formErr, setFormErr] = React.useState('')
   const handleClick = () => {
     if (!user) setFormErr('Для создания события необходимо авторизироваться')
@@ -80,37 +95,4 @@ function EventForm({ eventname, place, date, time, desc, err, changeValue, creEv
   )
 }
 
-EventForm.propTypes = {
-  eventname: oneOfType([string.isRequired, number.isRequired]),
-  place: oneOfType([string.isRequired, number.isRequired]),
-  date: oneOfType([string.isRequired, number.isRequired]),
-  time: oneOfType([string.isRequired, number.isRequired]),
-  desc: oneOfType([string.isRequired, number.isRequired]),
-  err: string,
-  clear: func,
-  creEvent: func,
-  changeValue: func,
-  user: object,
-  success: bool,
-  loading: bool,
-}
-
-const mapStateToProps = (state) => ({
-  eventname: state.fields.event.eventname,
-  place: state.fields.event.place,
-  date: state.fields.event.date,
-  time: state.fields.event.time,
-  desc: state.fields.event.desc,
-  err: state.event.create.error,
-  success: state.event.create.success,
-  loading: state.event.create.loading,
-  user: state.auth.user,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  changeValue: (formField, value) => dispatch(changeField('event', formField, value)),
-  creEvent: (body) => dispatch(createEvent(body)),
-  clear: () => dispatch(clearFields()),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(EventForm)
+export default EventForm

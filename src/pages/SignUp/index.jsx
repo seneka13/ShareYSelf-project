@@ -1,8 +1,7 @@
 import React from 'react'
 import { Container, Col } from 'react-bootstrap'
 import { NavLink, Redirect } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { string, number, func, object, oneOfType, bool } from 'prop-types'
+import { useSelector, useDispatch } from 'react-redux'
 import PrimeInput from '../../components/PrimeInput'
 import Logo from '../../components/Logo'
 import { changeField, signupAction } from '../../store/actions'
@@ -10,8 +9,21 @@ import PrimeBtn from '../../components/PrimeBtn'
 import LoadSpinner from '../../components/LoadSpinner'
 import styles from './signup.module.scss'
 
-function SignUp({ username, password, firstname, lastname,
-  changeValue, creAccount, err, loading, user }) {
+function SignUp() {
+  const dispatch = useDispatch()
+  const changeValue = (formField, value) => dispatch(changeField('signup', formField, value))
+  const creAccount = (body) => dispatch(signupAction(body))
+
+  const { username, password, firstname, lastname, err, loading, user } = useSelector((state) => ({
+    username: state.fields.signup.username,
+    password: state.fields.signup.password,
+    firstname: state.fields.signup.firstname,
+    lastname: state.fields.signup.lastname,
+    err: state.auth.signup.error,
+    loading: state.auth.signup.loading,
+    user: state.auth.user,
+  }))
+
   const [formErr, setFormErr] = React.useState('')
   const handleClick = () => {
     if (!username || !lastname || !firstname || !password) setFormErr('Заполните все поля')
@@ -84,31 +96,4 @@ function SignUp({ username, password, firstname, lastname,
   )
 }
 
-SignUp.propTypes = {
-  username: oneOfType([string.isRequired, number.isRequired]),
-  password: oneOfType([string.isRequired, number.isRequired]),
-  firstname: string,
-  lastname: string,
-  changeValue: func,
-  creAccount: func,
-  err: string,
-  user: object,
-  loading: bool,
-}
-
-const mapStateToProps = (state) => ({
-  username: state.fields.signup.username,
-  password: state.fields.signup.password,
-  firstname: state.fields.signup.firstname,
-  lastname: state.fields.signup.lastname,
-  err: state.auth.signup.error,
-  loading: state.auth.signup.loading,
-  user: state.auth.user,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  changeValue: (formField, value) => dispatch(changeField('signup', formField, value)),
-  creAccount: (body) => dispatch(signupAction(body)),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
+export default SignUp

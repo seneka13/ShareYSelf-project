@@ -1,6 +1,5 @@
 import React from 'react'
-import { string, number, func, object, oneOfType, bool } from 'prop-types'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import Modal from '../../components/Modal'
 import PrimeInput from '../../components/PrimeInput'
 import PrimeBtn from '../../components/PrimeBtn'
@@ -8,8 +7,17 @@ import LoadSpunner from '../../components/LoadSpinner'
 import { changeField, clearFields, userLogOut, editPassword } from '../../store/actions'
 import styles from './user.module.scss'
 
-function UserPasswordEdit({ user, pass, edPass, changeValue, clear,
-  logOut, err, success, loading }) {
+function UserPasswordEdit() {
+  const dispatch = useDispatch()
+  const changeValue = (formField, value) => dispatch(changeField('editpassword', formField, value))
+  const edPass = (id, body) => dispatch(editPassword(id, body))
+  const { user, pass, err, success, loading } = useSelector((state) => ({
+    user: state.auth.user,
+    pass: state.fields.editpassword.password,
+    err: state.auth.edit.error,
+    success: state.auth.edit.success,
+    loading: state.auth.edit.loading,
+  }))
   const [formErr, setFormErr] = React.useState('')
   const [currentPass, setCurrentPass] = React.useState('')
   const [passRepeat, setPassRepeat] = React.useState('')
@@ -28,11 +36,13 @@ function UserPasswordEdit({ user, pass, edPass, changeValue, clear,
   }
 
   React.useEffect(() => {
+    const clear = () => dispatch(clearFields())
+    const logOut = () => dispatch(userLogOut())
     if (success) {
       logOut()
       clear()
     }
-  }, [clear, logOut, success])
+  }, [dispatch, success])
 
   return (
     <Modal className={styles.userEditBtn} btnText="Изменить пароль">
@@ -70,31 +80,4 @@ function UserPasswordEdit({ user, pass, edPass, changeValue, clear,
   )
 }
 
-UserPasswordEdit.propTypes = {
-  pass: oneOfType([string.isRequired, number.isRequired]),
-  changeValue: func,
-  edPass: func,
-  logOut: func,
-  clear: func,
-  user: object,
-  err: string,
-  loading: bool,
-  success: bool,
-}
-
-const mapStateToProps = (state) => ({
-  user: state.auth.user,
-  pass: state.fields.editpassword.password,
-  err: state.auth.edit.error,
-  success: state.auth.edit.success,
-  loading: state.auth.edit.loading,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  changeValue: (formField, value) => dispatch(changeField('editpassword', formField, value)),
-  clear: () => dispatch(clearFields()),
-  logOut: () => dispatch(userLogOut()),
-  edPass: (id, body) => dispatch(editPassword(id, body)),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserPasswordEdit)
+export default UserPasswordEdit

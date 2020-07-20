@@ -1,7 +1,7 @@
 import React from 'react'
-import { string, func, number, oneOfType, bool } from 'prop-types'
+import { string, number, oneOfType } from 'prop-types'
 import { Redirect } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import PrimeBtn from '../../../components/PrimeBtn'
 import PrimeInput from '../../../components/PrimeInput'
 import PrimeText from '../../../components/PrimeText'
@@ -10,8 +10,23 @@ import styles from './modal.module.scss'
 import LoadSpinner from '../../../components/LoadSpinner'
 import { changeField, editEvent } from '../../../store/actions'
 
-function EditForm({ eventname, place, date, time, desc, err, id, author, changeValue, edEvent,
-  defEvent, defPlace, defDate, defTime, defDesc, success, loading }) {
+function EditForm({ id, author, defEvent, defPlace, defDate, defTime, defDesc }) {
+  const dispatch = useDispatch()
+  const changeValue = React.useCallback((formField, value) => dispatch(changeField('editevent', formField, value)),
+    [dispatch])
+  const edEvent = (eventId, body) => dispatch(editEvent(eventId, body))
+
+  const { eventname, place, date, time, desc, err, success, loading } = useSelector((state) => ({
+    eventname: state.fields.editevent.eventname,
+    place: state.fields.editevent.place,
+    date: state.fields.editevent.date,
+    time: state.fields.editevent.time,
+    desc: state.fields.editevent.desc,
+    err: state.event.edit.error,
+    success: state.event.edit.success,
+    loading: state.event.edit.loading,
+  }))
+
   const [formErr, setFormErr] = React.useState('')
   React.useEffect(() => {
     changeValue('eventname', defEvent)
@@ -80,11 +95,6 @@ function EditForm({ eventname, place, date, time, desc, err, id, author, changeV
 }
 
 EditForm.propTypes = {
-  eventname: oneOfType([string.isRequired, number.isRequired]),
-  place: oneOfType([string.isRequired, number.isRequired]),
-  date: oneOfType([string.isRequired, number.isRequired]),
-  time: oneOfType([string.isRequired, number.isRequired]),
-  desc: oneOfType([string.isRequired, number.isRequired]),
   id: oneOfType([string.isRequired, number.isRequired]),
   author: oneOfType([string.isRequired, number.isRequired]),
   defEvent: oneOfType([string.isRequired, number.isRequired]),
@@ -92,27 +102,6 @@ EditForm.propTypes = {
   defDate: oneOfType([string.isRequired, number.isRequired]),
   defTime: oneOfType([string.isRequired, number.isRequired]),
   defDesc: oneOfType([string.isRequired, number.isRequired]),
-  edEvent: func,
-  changeValue: func,
-  err: string,
-  success: bool,
-  loading: bool,
 }
 
-const mapStateToProps = (state) => ({
-  eventname: state.fields.editevent.eventname,
-  place: state.fields.editevent.place,
-  date: state.fields.editevent.date,
-  time: state.fields.editevent.time,
-  desc: state.fields.editevent.desc,
-  err: state.event.edit.error,
-  success: state.event.edit.success,
-  loading: state.event.edit.loading,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  changeValue: (formField, value) => dispatch(changeField('editevent', formField, value)),
-  edEvent: (id, body) => dispatch(editEvent(id, body)),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(EditForm)
+export default EditForm

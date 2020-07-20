@@ -1,8 +1,7 @@
 import React from 'react'
 import { Container, Col } from 'react-bootstrap'
-import { string, number, func, object, oneOfType, bool } from 'prop-types'
 import { Redirect } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import Logo from '../../components/Logo'
 import PrimeInput from '../../components/PrimeInput'
 import PrimeBtn from '../../components/PrimeBtn'
@@ -11,8 +10,19 @@ import { loginAction, changeField } from '../../store/actions'
 import LoadSpinner from '../../components/LoadSpinner'
 import styles from './login.module.scss'
 
-function LogIn({ username, password, changeValue, setBody, err, user, loading,
-}) {
+function LogIn() {
+  const dispatch = useDispatch()
+  const changeValue = (formField, value) => dispatch(changeField('login', formField, value))
+  const setBody = (body) => dispatch(loginAction(body))
+
+  const { username, password, err, user, loading } = useSelector((state) => ({
+    username: state.fields.login.username,
+    password: state.fields.login.password,
+    err: state.auth.login.error,
+    loading: state.auth.login.loading,
+    user: state.auth.user,
+  }))
+
   const [formErr, setFormErr] = React.useState('')
   const handleClick = () => {
     if (!username || !password) setFormErr('Введите логин / пароль')
@@ -62,27 +72,4 @@ function LogIn({ username, password, changeValue, setBody, err, user, loading,
   )
 }
 
-LogIn.propTypes = {
-  username: string.isRequired,
-  password: oneOfType([string.isRequired, number.isRequired]),
-  changeValue: func,
-  user: object,
-  setBody: func,
-  err: string,
-  loading: bool,
-}
-
-const mapStateToProps = (state) => ({
-  username: state.fields.login.username,
-  password: state.fields.login.password,
-  err: state.auth.login.error,
-  loading: state.auth.login.loading,
-  user: state.auth.user,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  changeValue: (formField, value) => dispatch(changeField('login', formField, value)),
-  setBody: (body) => dispatch(loginAction(body)),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(LogIn)
+export default LogIn
