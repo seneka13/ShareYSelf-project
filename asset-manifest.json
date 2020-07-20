@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/ShareYSelf-project/static/css/main.e4dc16e8.chunk.css",
-    "main.js": "/ShareYSelf-project/static/js/main.a80989d0.chunk.js",
-    "main.js.map": "/ShareYSelf-project/static/js/main.a80989d0.chunk.js.map",
+    "main.css": "/ShareYSelf-project/static/css/main.f7f8321c.chunk.css",
+    "main.js": "/ShareYSelf-project/static/js/main.0a58cd05.chunk.js",
+    "main.js.map": "/ShareYSelf-project/static/js/main.0a58cd05.chunk.js.map",
     "runtime-main.js": "/ShareYSelf-project/static/js/runtime-main.05719476.js",
     "runtime-main.js.map": "/ShareYSelf-project/static/js/runtime-main.05719476.js.map",
     "static/css/2.af3c1da9.chunk.css": "/ShareYSelf-project/static/css/2.af3c1da9.chunk.css",
-    "static/js/2.999ef4ca.chunk.js": "/ShareYSelf-project/static/js/2.999ef4ca.chunk.js",
-    "static/js/2.999ef4ca.chunk.js.map": "/ShareYSelf-project/static/js/2.999ef4ca.chunk.js.map",
+    "static/js/2.9be7faa5.chunk.js": "/ShareYSelf-project/static/js/2.9be7faa5.chunk.js",
+    "static/js/2.9be7faa5.chunk.js.map": "/ShareYSelf-project/static/js/2.9be7faa5.chunk.js.map",
     "index.html": "/ShareYSelf-project/index.html",
-    "precache-manifest.9e35c2ddd69ea6ecc4f71d3d9c6c7a5f.js": "/ShareYSelf-project/precache-manifest.9e35c2ddd69ea6ecc4f71d3d9c6c7a5f.js",
+    "precache-manifest.0b0e900b47be97c5fcabaa089f0ddf12.js": "/ShareYSelf-project/precache-manifest.0b0e900b47be97c5fcabaa089f0ddf12.js",
     "service-worker.js": "/ShareYSelf-project/service-worker.js",
     "static/css/2.af3c1da9.chunk.css.map": "/ShareYSelf-project/static/css/2.af3c1da9.chunk.css.map",
-    "static/css/main.e4dc16e8.chunk.css.map": "/ShareYSelf-project/static/css/main.e4dc16e8.chunk.css.map",
-    "static/js/2.999ef4ca.chunk.js.LICENSE.txt": "/ShareYSelf-project/static/js/2.999ef4ca.chunk.js.LICENSE.txt",
+    "static/css/main.f7f8321c.chunk.css.map": "/ShareYSelf-project/static/css/main.f7f8321c.chunk.css.map",
+    "static/js/2.9be7faa5.chunk.js.LICENSE.txt": "/ShareYSelf-project/static/js/2.9be7faa5.chunk.js.LICENSE.txt",
+    "static/media/not.module.scss": "/ShareYSelf-project/static/media/NotFound.efb45ea0.jpg",
     "static/media/about.module.scss": "/ShareYSelf-project/static/media/aboutBg.c25a27ec.jpg",
     "static/media/signup.module.scss": "/ShareYSelf-project/static/media/bg2.975cbcf4.jpg",
     "static/media/login.module.scss": "/ShareYSelf-project/static/media/bg3.310ddd60.jpg",
@@ -26,8 +27,8 @@
   "entrypoints": [
     "static/js/runtime-main.05719476.js",
     "static/css/2.af3c1da9.chunk.css",
-    "static/js/2.999ef4ca.chunk.js",
-    "static/css/main.e4dc16e8.chunk.css",
-    "static/js/main.a80989d0.chunk.js"
+    "static/js/2.9be7faa5.chunk.js",
+    "static/css/main.f7f8321c.chunk.css",
+    "static/js/main.0a58cd05.chunk.js"
   ]
 }
