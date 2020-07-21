@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/ShareYSelf-project/static/css/main.81ce0f03.chunk.css",
+    "main.css": "/ShareYSelf-project/static/css/main.a2210649.chunk.css",
     "main.js": "/ShareYSelf-project/static/js/main.e5f9d7b5.chunk.js",
     "main.js.map": "/ShareYSelf-project/static/js/main.e5f9d7b5.chunk.js.map",
     "runtime-main.js": "/ShareYSelf-project/static/js/runtime-main.05719476.js",
@@ -9,17 +9,17 @@
     "static/js/2.0403e5f9.chunk.js": "/ShareYSelf-project/static/js/2.0403e5f9.chunk.js",
     "static/js/2.0403e5f9.chunk.js.map": "/ShareYSelf-project/static/js/2.0403e5f9.chunk.js.map",
     "index.html": "/ShareYSelf-project/index.html",
-    "precache-manifest.d4a0ded50b41462fd60a015aa3b9cced.js": "/ShareYSelf-project/precache-manifest.d4a0ded50b41462fd60a015aa3b9cced.js",
+    "precache-manifest.af1c0119487563ea5abe7f827d607d3b.js": "/ShareYSelf-project/precache-manifest.af1c0119487563ea5abe7f827d607d3b.js",
     "service-worker.js": "/ShareYSelf-project/service-worker.js",
     "static/css/2.af3c1da9.chunk.css.map": "/ShareYSelf-project/static/css/2.af3c1da9.chunk.css.map",
-    "static/css/main.81ce0f03.chunk.css.map": "/ShareYSelf-project/static/css/main.81ce0f03.chunk.css.map",
+    "static/css/main.a2210649.chunk.css.map": "/ShareYSelf-project/static/css/main.a2210649.chunk.css.map",
     "static/js/2.0403e5f9.chunk.js.LICENSE.txt": "/ShareYSelf-project/static/js/2.0403e5f9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.05719476.js",
     "static/css/2.af3c1da9.chunk.css",
     "static/js/2.0403e5f9.chunk.js",
-    "static/css/main.81ce0f03.chunk.css",
+    "static/css/main.a2210649.chunk.css",
     "static/js/main.e5f9d7b5.chunk.js"
   ]
 }
