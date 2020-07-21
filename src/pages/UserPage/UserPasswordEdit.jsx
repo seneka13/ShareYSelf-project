@@ -4,6 +4,7 @@ import Modal from '../../components/Modal'
 import PrimeInput from '../../components/PrimeInput'
 import PrimeBtn from '../../components/PrimeBtn'
 import LoadSpunner from '../../components/LoadSpinner'
+import FormError from '../../components/FormError'
 import { changeField, clearFields, userLogOut, editPassword } from '../../store/actions'
 import styles from './user.module.scss'
 
@@ -71,9 +72,7 @@ function UserPasswordEdit() {
         value={passRepeat}
         onChange={(value) => setPassRepeat(value)}
       />
-      <div className={styles.formErr}>
-        {(err && !formErr) ? err : formErr}
-      </div>
+      <FormError apiError={err} frontError={formErr} />
       {loading && <LoadSpunner />}
       <PrimeBtn text="Подтвердить" className={styles.userEditBtn} onClick={handleEdit} />
     </Modal>

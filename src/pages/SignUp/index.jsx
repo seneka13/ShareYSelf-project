@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import PrimeInput from '../../components/PrimeInput'
 import Logo from '../../components/Logo'
 import { changeField, signupAction } from '../../store/actions'
+import FormError from '../../components/FormError'
 import PrimeBtn from '../../components/PrimeBtn'
 import LoadSpinner from '../../components/LoadSpinner'
 import styles from './signup.module.scss'
@@ -71,9 +72,7 @@ function SignUp() {
               name="signUp"
               onChange={(value) => changeValue('password', value)}
             />
-            <div className={styles.formErr}>
-              {(err && !formErr) ? err : formErr}
-            </div>
+            <FormError apiError={err} frontError={formErr} />
             <PrimeBtn
               text="Зарегестрироваться"
               onClick={handleClick}

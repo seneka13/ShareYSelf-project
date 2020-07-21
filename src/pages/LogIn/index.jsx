@@ -8,6 +8,7 @@ import PrimeBtn from '../../components/PrimeBtn'
 import HelpLink from '../../components/HelpLink'
 import { loginAction, changeField } from '../../store/actions'
 import LoadSpinner from '../../components/LoadSpinner'
+import FormError from '../../components/FormError'
 import styles from './login.module.scss'
 
 function LogIn() {
@@ -54,9 +55,7 @@ function LogIn() {
               value={password}
               onChange={(value) => changeValue('password', value)}
             />
-            <div className={styles.formErr}>
-              {(err && !formErr) ? err : formErr}
-            </div>
+            <FormError apiError={err} frontError={formErr} />
             <PrimeBtn
               text="Войти"
               onClick={handleClick}

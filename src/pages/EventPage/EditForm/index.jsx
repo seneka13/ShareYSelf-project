@@ -7,6 +7,7 @@ import PrimeInput from '../../../components/PrimeInput'
 import PrimeText from '../../../components/PrimeText'
 import Modal from '../../../components/Modal'
 import styles from './modal.module.scss'
+import FormError from '../../../components/FormError'
 import LoadSpinner from '../../../components/LoadSpinner'
 import { changeField, editEvent } from '../../../store/actions'
 
@@ -85,7 +86,7 @@ function EditForm({ id, author, defEvent, defPlace, defDate, defTime, defDesc })
           value={desc}
           onChange={(value) => changeValue('desc', value)}
         />
-        <div className={styles.formErr}>{(err && !formErr) ? err : formErr}</div>
+        <FormError apiError={err} frontError={formErr} />
         {loading && <LoadSpinner />}
         {success && <Redirect to="/event" />}
         <PrimeBtn className={styles.editBtn} text="Отправить" onClick={handleEdit} />
