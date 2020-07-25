@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "19ea168a24f7f2ad8982fcc4fafcbb24",
+    "revision": "2bff59e408041179269eda52f75c506a",
     "url": "/ShareYSelf-project/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ShareYSelf-project/static/css/2.af3c1da9.chunk.css"
   },
   {
-    "revision": "b7bcfaa3cd92b4e6769f",
-    "url": "/ShareYSelf-project/static/css/main.a2210649.chunk.css"
+    "revision": "a5821d9e3f802ec18942",
+    "url": "/ShareYSelf-project/static/css/main.bf8f06bc.chunk.css"
   },
   {
     "revision": "2542741c203ca8cff5d4",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ShareYSelf-project/static/js/2.0403e5f9.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b7bcfaa3cd92b4e6769f",
-    "url": "/ShareYSelf-project/static/js/main.e5f9d7b5.chunk.js"
+    "revision": "a5821d9e3f802ec18942",
+    "url": "/ShareYSelf-project/static/js/main.9db923b2.chunk.js"
   },
   {
     "revision": "4dfd757c77ddf704a61c",
