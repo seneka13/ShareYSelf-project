@@ -78,6 +78,11 @@
             background: $btn-color2;
             color: $txt-color;
         }
+        &:focus {
+            cursor: pointer;
+            background: $btn-color2;
+            color: $txt-color;
+        }
 
         input {
             display: none;
@@ -111,7 +116,9 @@
 
             &:hover {
                 background: $btn-color2;
-                color: $txt-color;
+            }
+            &:focus {
+                background: $btn-color2;
             }
         }
     }

@@ -34,9 +34,11 @@
         background: $btn-color2;
         color: $txt-color;
     }
+    &:focus{
+        background: $btn-color2;
+        color: $txt-color;
+    }
 }
-
-
 
 .signupText {
     color: $txt-color;

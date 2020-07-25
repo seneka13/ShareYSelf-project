@@ -30,7 +30,7 @@ function EventCard({ id, eventname, place, date, time, desc, author }) {
       }}
       >
         <div className={styles.eventCard}>
-          <img src='https://seneka13.github.io/ShareYSelf-project/img/event.png' alt="event" />
+          <img src="https://seneka13.github.io/ShareYSelf-project/img/event.png" alt="event" />
           <div className={styles.eventName}>{eventname}</div>
           <div className={styles.eventplace}>Место проведения: {place}</div>
           <div className={styles.eventDate}>
